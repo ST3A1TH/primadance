@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/hero-image.jpg";
-import logoTextDark from "@/assets/logo-text-dark.jpg";
+import logoTextDark from "@/assets/logo-text-dark.png";
 
 const HeroSection = () => {
   const { t } = useLanguage();

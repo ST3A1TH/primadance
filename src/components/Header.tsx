@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Globe, Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import logoDark from "@/assets/logo-dark.jpg";
+import logoDark from "@/assets/logo-dark.png";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
