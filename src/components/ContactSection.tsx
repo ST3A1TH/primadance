@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useRef } from "react";
 import { MapPin, Instagram, Phone, Mail } from "lucide-react";
-import logoDark from "@/assets/logo-dark.jpg";
+import logoDark from "@/assets/logo-dark.png";
 
 const ContactSection = () => {
   const { t } = useLanguage();
