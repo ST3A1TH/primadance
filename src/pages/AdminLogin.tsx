@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -12,9 +12,13 @@ const AdminLogin = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    
+    // Map username to email: username "Prima" → prima@primadance.md
+    const email = `${username.toLowerCase()}@primadance.md`;
+    
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
-      toast.error("Login failed: " + error.message);
+      toast.error("Invalid username or password");
     } else {
       navigate("/admin");
     }
@@ -27,10 +31,10 @@ const AdminLogin = () => {
         <h1 className="font-display text-3xl text-foreground text-center">Admin Login</h1>
         <div className="space-y-4">
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full bg-secondary border border-border text-foreground px-4 py-3 text-sm font-body focus:outline-none focus:border-foreground transition-colors"
             required
           />
