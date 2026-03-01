@@ -1,24 +1,45 @@
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
-const groupPrices = [
-  { lessons: "4", price: "800" },
-  { lessons: "8", price: "1400" },
-  { lessons: "12", price: "1800" },
-];
-
-const personalPrices = [
-  { lessons: "1", price: "700" },
-  { lessons: "4", price: "2600" },
-  { lessons: "8", price: "5200" },
-  { lessons: "12", price: "7000" },
-];
+interface PricingItem {
+  id: string;
+  category: string;
+  label_ro: string;
+  label_ru: string;
+  price: string;
+}
 
 const PricingSection = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [items, setItems] = useState<PricingItem[]>([]);
+  const [rulesText, setRulesText] = useState({ ro: "", ru: "" });
+
+  useEffect(() => {
+    supabase.from("pricing").select("*").order("category").order("sort_order").then(({ data }) => {
+      if (data) setItems(data);
+    });
+    supabase.from("site_content").select("*").eq("key", "pricing.rules").single().then(({ data }) => {
+      if (data) setRulesText({ ro: data.value_ro, ru: data.value_ru });
+    });
+  }, []);
+
+  const groupItems = items.filter(i => i.category === "group");
+  const personalItems = items.filter(i => i.category === "personal");
+
+  const renderList = (list: PricingItem[]) => (
+    <div className="space-y-4">
+      {list.map((p) => (
+        <div key={p.id} className="flex justify-between items-baseline border-b border-border pb-3">
+          <span className="text-foreground font-body text-sm">{lang === "ro" ? p.label_ro : p.label_ru}</span>
+          <span className="text-foreground font-body text-sm">{p.price}</span>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <section id="pricing" className="py-24 md:py-32 bg-secondary">
@@ -33,62 +54,18 @@ const PricingSection = () => {
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          {/* Group */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <h3 className="font-display text-2xl text-foreground mb-2">
-              {t("pricing.group")}
-            </h3>
-            <p className="text-muted-foreground text-xs tracking-[0.15em] uppercase font-body mb-8">
-              {t("pricing.minutes")}
-            </p>
-            <div className="space-y-4">
-              {groupPrices.map((p) => (
-                <div key={p.lessons} className="flex justify-between items-baseline border-b border-border pb-3">
-                  <span className="text-foreground font-body text-sm">
-                    {p.lessons} {t("pricing.lessons")}
-                  </span>
-                  <span className="text-foreground font-body text-sm">{p.price} lei</span>
-                </div>
-              ))}
-              <div className="flex justify-between items-baseline border-b border-border pb-3">
-                <span className="text-foreground font-body text-sm">
-                  {t("pricing.unlimited")}
-                </span>
-                <span className="text-foreground font-body text-sm">3000 lei</span>
-              </div>
-            </div>
+          <motion.div initial={{ opacity: 0, x: -30 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7 }}>
+            <h3 className="font-display text-2xl text-foreground mb-2">{t("pricing.group")}</h3>
+            <p className="text-muted-foreground text-xs tracking-[0.15em] uppercase font-body mb-8">{t("pricing.minutes")}</p>
+            {renderList(groupItems)}
           </motion.div>
-
-          {/* Personal */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <h3 className="font-display text-2xl text-foreground mb-2">
-              {t("pricing.personal")}
-            </h3>
-            <p className="text-muted-foreground text-xs tracking-[0.15em] uppercase font-body mb-8">
-              {t("pricing.minutes")}
-            </p>
-            <div className="space-y-4">
-              {personalPrices.map((p) => (
-                <div key={p.lessons} className="flex justify-between items-baseline border-b border-border pb-3">
-                  <span className="text-foreground font-body text-sm">
-                    {p.lessons} {parseInt(p.lessons) === 1 ? t("pricing.lesson") : t("pricing.lessons")}
-                  </span>
-                  <span className="text-foreground font-body text-sm">{p.price} lei</span>
-                </div>
-              ))}
-            </div>
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7 }}>
+            <h3 className="font-display text-2xl text-foreground mb-2">{t("pricing.personal")}</h3>
+            <p className="text-muted-foreground text-xs tracking-[0.15em] uppercase font-body mb-8">{t("pricing.minutes")}</p>
+            {renderList(personalItems)}
           </motion.div>
         </div>
 
-        {/* Rules */}
         <motion.div
           className="border border-border p-8 text-center max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
@@ -97,7 +74,7 @@ const PricingSection = () => {
         >
           <h4 className="font-display text-xl text-foreground mb-4">{t("pricing.rules.title")}</h4>
           <p className="text-muted-foreground text-sm leading-relaxed font-body">
-            {t("pricing.rules.text")}
+            {lang === "ro" ? rulesText.ro : rulesText.ru}
           </p>
         </motion.div>
       </div>
