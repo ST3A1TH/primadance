@@ -19,6 +19,18 @@ serve(async (req) => {
 
     const { email, password } = await req.json();
 
+    // Try to find existing user first
+    const { data: { users } } = await supabaseAdmin.auth.admin.listUsers();
+    const existingUser = users?.find(u => u.email === email);
+
+    if (existingUser) {
+      // Update password for existing user
+      await supabaseAdmin.auth.admin.updateUserById(existingUser.id, { password });
+      return new Response(JSON.stringify({ message: 'Admin password updated' }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     // Create the user
     const { data: userData, error: createError } = await supabaseAdmin.auth.admin.createUser({
       email,
@@ -26,15 +38,7 @@ serve(async (req) => {
       email_confirm: true,
     });
 
-    if (createError) {
-      // If user already exists, that's fine
-      if (createError.message.includes('already been registered')) {
-        return new Response(JSON.stringify({ message: 'Admin already exists' }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-      throw createError;
-    }
+    if (createError) throw createError;
 
     // Assign admin role
     const { error: roleError } = await supabaseAdmin
