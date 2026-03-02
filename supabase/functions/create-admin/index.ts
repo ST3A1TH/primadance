@@ -17,6 +17,38 @@ serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
     );
 
+    // Require authentication
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const token = authHeader.replace('Bearer ', '');
+    const { data: claims, error: claimsError } = await supabaseAdmin.auth.getUser(token);
+    if (claimsError || !claims?.user) {
+      return new Response(JSON.stringify({ error: 'Invalid token' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Verify caller is an admin
+    const { data: roles } = await supabaseAdmin
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', claims.user.id)
+      .eq('role', 'admin');
+
+    if (!roles || roles.length === 0) {
+      return new Response(JSON.stringify({ error: 'Forbidden' }), {
+        status: 403,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const { email, password } = await req.json();
 
     // Try to find existing user first
@@ -24,14 +56,12 @@ serve(async (req) => {
     const existingUser = users?.find(u => u.email === email);
 
     if (existingUser) {
-      // Update password for existing user
       await supabaseAdmin.auth.admin.updateUserById(existingUser.id, { password });
       return new Response(JSON.stringify({ message: 'Admin password updated' }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    // Create the user
     const { data: userData, error: createError } = await supabaseAdmin.auth.admin.createUser({
       email,
       password,
@@ -40,7 +70,6 @@ serve(async (req) => {
 
     if (createError) throw createError;
 
-    // Assign admin role
     const { error: roleError } = await supabaseAdmin
       .from('user_roles')
       .insert({ user_id: userData.user.id, role: 'admin' });
