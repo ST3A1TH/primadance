@@ -5,6 +5,8 @@ import { useRef } from "react";
 import { MapPin, Instagram, Phone } from "lucide-react";
 import logoTextDark from "@/assets/logo-text-dark.png";
 import logoTextLight from "@/assets/logo-text-light.png";
+import iconDark from "@/assets/icon-dark.png";
+import iconLight from "@/assets/icon-light.png";
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -13,6 +15,7 @@ const ContactSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const logoSrc = theme === "light" ? logoTextDark : logoTextLight;
+  const iconSrc = theme === "light" ? iconDark : iconLight;
 
   return (
     <>
@@ -91,7 +94,10 @@ const ContactSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {/* Brand */}
             <div className="flex flex-col gap-3">
-              <img src={logoSrc} alt="Prima Dance Studio" className="h-10 object-contain object-left" />
+              <div className="flex items-center gap-3">
+                <img src={iconSrc} alt="Prima Dance" className="h-8 w-auto object-contain" />
+                <img src={logoSrc} alt="Prima Dance Studio" className="h-8 object-contain object-left" />
+              </div>
             </div>
 
             {/* Contact Info */}

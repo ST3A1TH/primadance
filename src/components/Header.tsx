@@ -37,10 +37,10 @@ const Header = () => {
         scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
-          <img src={iconSrc} alt="Prima Dance" className="h-10 w-auto object-contain" />
-          <span className={`font-display text-xl tracking-[0.2em] uppercase hidden sm:block ${
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        <button onClick={() => scrollTo("hero")} className="flex items-center gap-2">
+          <img src={iconSrc} alt="Prima Dance" className="h-8 w-auto object-contain" />
+          <span className={`font-display text-lg tracking-[0.15em] uppercase hidden sm:block ${
             isOnHero ? "text-white" : "text-foreground"
           }`}>
             Prima Dance
@@ -48,12 +48,12 @@ const Header = () => {
         </button>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           {navItems.map((item) => (
             <button
               key={item}
               onClick={() => scrollTo(item)}
-              className={`transition-colors duration-300 text-sm tracking-[0.15em] uppercase font-body ${
+              className={`transition-colors duration-300 text-xs tracking-[0.12em] uppercase font-body ${
                 isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -62,7 +62,7 @@ const Header = () => {
           ))}
           <Link
             to="/my-account"
-            className={`transition-colors duration-300 text-sm tracking-[0.15em] uppercase font-body ${
+            className={`transition-colors duration-300 text-xs tracking-[0.12em] uppercase font-body ${
               isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -70,7 +70,7 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
