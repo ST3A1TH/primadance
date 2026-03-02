@@ -96,7 +96,7 @@ const ContactSection = () => {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
                 <img src={iconSrc} alt="Prima Dance" className="h-8 w-auto object-contain" />
-                <img src={logoSrc} alt="Prima Dance Studio" className="h-8 object-contain object-left" />
+                <span className="font-display text-lg tracking-[0.15em] uppercase text-foreground">Prima Dance</span>
               </div>
             </div>
 
