@@ -60,6 +60,14 @@ const Header = () => {
               {t(`nav.${item}`)}
             </button>
           ))}
+          <Link
+            to="/my-account"
+            className={`transition-colors duration-300 text-sm tracking-[0.15em] uppercase font-body ${
+              isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {t("nav.account")}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -117,8 +125,15 @@ const Header = () => {
                 </button>
               ))}
               <Link
-                to="/booking"
+                to="/my-account"
                 className="text-foreground text-sm tracking-[0.15em] uppercase font-body text-left py-2 border-t border-border pt-4 mt-2"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("nav.account")}
+              </Link>
+              <Link
+                to="/booking"
+                className="text-foreground text-sm tracking-[0.15em] uppercase font-body text-left py-2"
                 onClick={() => setMenuOpen(false)}
               >
                 {t("nav.booking")}

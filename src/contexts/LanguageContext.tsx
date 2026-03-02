@@ -131,6 +131,15 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // Overlay
   "overlay.quote": { ro: "Dansul este poezia piciorului.", ru: "Танец — это поэзия ног." },
+
+  // Account
+  "nav.account": { ro: "Contul Meu", ru: "Мой аккаунт" },
+  "account.title": { ro: "Contul Meu", ru: "Мой аккаунт" },
+  "account.subtitle": { ro: "Verifică programările tale", ru: "Проверьте свои записи" },
+  "account.emailLabel": { ro: "Adresa ta de email", ru: "Ваш email" },
+  "account.search": { ro: "Vezi programările", ru: "Показать записи" },
+  "account.empty": { ro: "Nu există programări asociate acestui email.", ru: "Для этого email нет записей." },
+  "account.found": { ro: "Programările tale", ru: "Ваши записи" },
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
