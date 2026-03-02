@@ -5,6 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import logoDark from "@/assets/logo-dark.png";
+import logoLight from "@/assets/logo-light.jpg";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -25,6 +26,11 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+  // When not scrolled on dark hero, always show white text
+  // When scrolled or on light theme, use theme colors
+  const isOnHero = !scrolled;
+  const logoSrc = scrolled && theme === "light" ? logoLight : logoDark;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -33,8 +39,10 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
-          <img src={logoDark} alt="Prima Dance" className="h-10 w-10 object-cover rounded-full" />
-          <span className="font-display text-foreground text-xl tracking-[0.2em] uppercase hidden sm:block">
+          <img src={logoSrc} alt="Prima Dance" className="h-10 w-10 object-cover rounded-full" />
+          <span className={`font-display text-xl tracking-[0.2em] uppercase hidden sm:block ${
+            isOnHero ? "text-white" : "text-foreground"
+          }`}>
             Prima Dance
           </span>
         </button>
@@ -45,7 +53,9 @@ const Header = () => {
             <button
               key={item}
               onClick={() => scrollTo(item)}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm tracking-[0.15em] uppercase font-body"
+              className={`transition-colors duration-300 text-sm tracking-[0.15em] uppercase font-body ${
+                isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               {t(`nav.${item}`)}
             </button>
@@ -56,7 +66,11 @@ const Header = () => {
           {/* Book Now */}
           <Link
             to="/booking"
-            className="hidden sm:inline-block px-5 py-2 bg-foreground text-background text-xs tracking-[0.15em] uppercase font-body hover:bg-foreground/90 transition-colors"
+            className={`hidden sm:inline-block px-5 py-2 text-xs tracking-[0.15em] uppercase font-body transition-colors ${
+              isOnHero
+                ? "bg-white text-black hover:bg-white/90"
+                : "bg-foreground text-background hover:bg-foreground/90"
+            }`}
           >
             {t("nav.booking")}
           </Link>
@@ -64,7 +78,9 @@ const Header = () => {
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+            className={`transition-colors duration-300 ${
+              isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
+            }`}
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -73,7 +89,9 @@ const Header = () => {
           {/* Language switcher */}
           <button
             onClick={() => setLang(lang === "ro" ? "ru" : "ro")}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
+            className={`flex items-center gap-2 transition-colors duration-300 ${
+              isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
+            }`}
             aria-label="Switch language"
           >
             <Globe className="w-4 h-4" />
@@ -83,7 +101,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-foreground"
+            className={`lg:hidden ${isOnHero ? "text-white" : "text-foreground"}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

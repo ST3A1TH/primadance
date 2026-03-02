@@ -1,18 +1,19 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
-import heroRef from "@/assets/hero-ref.jpg";
 import logoTextDark from "@/assets/logo-text-dark.png";
 
-const slides = [heroRef, heroSlide1, heroSlide2, heroSlide3, heroImage];
+const slides = [heroSlide1, heroSlide2, heroSlide3, heroImage];
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const [current, setCurrent] = useState(0);
 
   const nextSlide = useCallback(() => {
@@ -41,7 +42,8 @@ const HeroSection = () => {
             alt="Dance"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-background/60" />
+          {/* Always use dark overlay for readability regardless of theme */}
+          <div className="absolute inset-0 bg-black/55" />
         </motion.div>
       </AnimatePresence>
 
@@ -52,13 +54,13 @@ const HeroSection = () => {
             key={i}
             onClick={() => setCurrent(i)}
             className={`w-8 h-[2px] transition-all duration-500 ${
-              i === current ? "bg-foreground" : "bg-foreground/30"
+              i === current ? "bg-white" : "bg-white/30"
             }`}
           />
         ))}
       </div>
 
-      {/* Content */}
+      {/* Content - always white text on hero regardless of theme */}
       <div className="relative z-10 text-center px-6">
         <motion.img
           src={logoTextDark}
@@ -69,7 +71,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.2 }}
         />
         <motion.p
-          className="font-display text-foreground/80 text-lg sm:text-xl md:text-2xl italic tracking-wide mb-2"
+          className="font-display text-white/80 text-lg sm:text-xl md:text-2xl italic tracking-wide mb-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -77,7 +79,7 @@ const HeroSection = () => {
           Dance Studio
         </motion.p>
         <motion.p
-          className="text-muted-foreground text-sm sm:text-base tracking-[0.2em] uppercase font-body mb-10 max-w-lg mx-auto"
+          className="text-white/60 text-sm sm:text-base tracking-[0.2em] uppercase font-body mb-10 max-w-lg mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
@@ -91,7 +93,7 @@ const HeroSection = () => {
         >
           <Link
             to="/booking"
-            className="inline-block border border-foreground text-foreground px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-foreground hover:text-background transition-all duration-500"
+            className="inline-block border border-white text-white px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-white hover:text-black transition-all duration-500"
           >
             {t("hero.cta")}
           </Link>
@@ -104,7 +106,7 @@ const HeroSection = () => {
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <div className="w-[1px] h-12 bg-foreground/30" />
+        <div className="w-[1px] h-12 bg-white/30" />
       </motion.div>
     </section>
   );
