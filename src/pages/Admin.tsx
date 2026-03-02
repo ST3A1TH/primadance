@@ -59,7 +59,7 @@ const Admin = () => {
       {/* Header */}
       <div className="border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="font-display text-2xl text-foreground">Prima Admin</h1>
+          <h1 className="font-display text-2xl text-foreground">Prima Dance Admin</h1>
           <button onClick={handleLogout} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
             <LogOut className="w-4 h-4" /> Logout
           </button>

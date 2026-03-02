@@ -268,7 +268,7 @@ const AdminBookings = () => {
 
             return daySchedule.map(slot => {
               const slotBookings = dayBookings.filter(b => b.schedule_id === slot.id);
-              const maxP = settings.find(s => s.schedule_id === slot.id)?.max_participants ?? 15;
+              const maxP = settings.find(s => s.schedule_id === slot.id)?.max_participants ?? 20;
               return (
                 <div key={slot.id} className="border border-border">
                   <div className="p-4 border-b border-border flex items-center justify-between">

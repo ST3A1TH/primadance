@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { Globe, Menu, X } from "lucide-react";
+import { Globe, Menu, X, Sun, Moon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import logoDark from "@/assets/logo-dark.png";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -31,9 +33,9 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
-          <img src={logoDark} alt="Prima Dance Studio" className="h-10 w-10 object-cover rounded-full" />
+          <img src={logoDark} alt="Prima Dance" className="h-10 w-10 object-cover rounded-full" />
           <span className="font-display text-foreground text-xl tracking-[0.2em] uppercase hidden sm:block">
-            Prima
+            Prima Dance
           </span>
         </button>
 
@@ -58,6 +60,15 @@ const Header = () => {
           >
             {t("nav.booking")}
           </Link>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
 
           {/* Language switcher */}
           <button
