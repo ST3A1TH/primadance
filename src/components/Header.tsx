@@ -42,7 +42,7 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
           <img
-            src={isOnHero ? logoTextDark : (theme === "light" ? logoTextDark : logoTextLight)}
+            src={isOnHero ? logoTextLight : (theme === "light" ? logoTextDark : logoTextLight)}
             alt="Prima Dance Studio"
             className="h-10 sm:h-12 object-contain"
           />
