@@ -140,6 +140,15 @@ const translations: Record<string, Record<Lang, string>> = {
   "account.search": { ro: "Vezi programările", ru: "Показать записи" },
   "account.empty": { ro: "Nu există programări asociate acestui email.", ru: "Для этого email нет записей." },
   "account.found": { ro: "Programările tale", ru: "Ваши записи" },
+  "account.sendCode": { ro: "Trimite codul", ru: "Отправить код" },
+  "account.codeHint": { ro: "Vei primi un cod de verificare pe email", ru: "Вы получите код подтверждения на email" },
+  "account.enterCode": { ro: "Introdu codul", ru: "Введите код" },
+  "account.verify": { ro: "Verifică", ru: "Подтвердить" },
+  "account.resend": { ro: "Retrimite codul", ru: "Отправить код повторно" },
+  "account.codeSent": { ro: "Codul a fost trimis pe email", ru: "Код отправлен на email" },
+  "account.invalidCode": { ro: "Cod invalid. Încearcă din nou.", ru: "Неверный код. Попробуйте снова." },
+  "account.error": { ro: "A apărut o eroare", ru: "Произошла ошибка" },
+  "account.logout": { ro: "Deconectare", ru: "Выйти" },
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
