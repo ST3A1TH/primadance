@@ -47,29 +47,6 @@ const Header = () => {
           </span>
         </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {navItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className={`transition-colors duration-300 text-xs tracking-[0.12em] uppercase font-body ${
-                isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {t(`nav.${item}`)}
-            </button>
-          ))}
-          <Link
-            to="/my-account"
-            className={`transition-colors duration-300 text-xs tracking-[0.12em] uppercase font-body ${
-              isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {t("nav.account")}
-          </Link>
-        </nav>
-
         <div className="flex items-center gap-3">
           {/* Theme toggle */}
           <button
@@ -97,7 +74,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden ${isOnHero ? "text-white" : "text-foreground"}`}
+            className={`${isOnHero ? "text-white" : "text-foreground"}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -112,7 +89,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background/98 backdrop-blur-md border-b border-border overflow-hidden"
+            className="bg-background/98 backdrop-blur-md border-b border-border overflow-hidden"
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navItems.map((item) => (
