@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Globe, Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import logoDark from "@/assets/logo-dark.png";
 
 const Header = () => {
@@ -50,6 +51,14 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
+          {/* Book Now */}
+          <Link
+            to="/booking"
+            className="hidden sm:inline-block px-5 py-2 bg-foreground text-background text-xs tracking-[0.15em] uppercase font-body hover:bg-foreground/90 transition-colors"
+          >
+            {t("nav.booking")}
+          </Link>
+
           {/* Language switcher */}
           <button
             onClick={() => setLang(lang === "ro" ? "ru" : "ro")}
@@ -90,6 +99,13 @@ const Header = () => {
                   {t(`nav.${item}`)}
                 </button>
               ))}
+              <Link
+                to="/booking"
+                className="text-foreground text-sm tracking-[0.15em] uppercase font-body text-left py-2 border-t border-border pt-4 mt-2"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("nav.booking")}
+              </Link>
             </nav>
           </motion.div>
         )}

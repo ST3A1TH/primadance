@@ -17,6 +17,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.schedule": { ro: "Orar", ru: "Расписание" },
   "nav.pricing": { ro: "Prețuri", ru: "Цены" },
   "nav.contact": { ro: "Contact", ru: "Контакты" },
+  "nav.booking": { ro: "Rezervare", ru: "Запись" },
 
   // Hero
   "hero.subtitle": { ro: "Arta mișcării. Eleganța pasiunii.", ru: "Искусство движения. Элегантность страсти." },
@@ -101,6 +102,29 @@ const translations: Record<string, Record<Lang, string>> = {
   "contact.title": { ro: "Contact", ru: "Контакты" },
   "contact.address": { ro: "Chișinău, Moldova", ru: "Кишинёв, Молдова" },
   "footer.rights": { ro: "Toate drepturile rezervate.", ru: "Все права защищены." },
+
+  // Booking
+  "booking.title": { ro: "Rezervare", ru: "Запись" },
+  "booking.subtitle": { ro: "Alege cursul, data și ora", ru: "Выберите занятие, дату и время" },
+  "booking.selectClass": { ro: "Alege cursul", ru: "Выберите занятие" },
+  "booking.selectDate": { ro: "Alege data", ru: "Выберите дату" },
+  "booking.selectTime": { ro: "Alege ora", ru: "Выберите время" },
+  "booking.yourDetails": { ro: "Datele tale", ru: "Ваши данные" },
+  "booking.continue": { ro: "Continuă", ru: "Продолжить" },
+  "booking.confirm": { ro: "Confirmă rezervarea", ru: "Подтвердить запись" },
+  "booking.back": { ro: "Înapoi", ru: "Назад" },
+  "booking.backToSite": { ro: "Înapoi la site", ru: "Назад на сайт" },
+  "booking.success": { ro: "Rezervare confirmată!", ru: "Запись подтверждена!" },
+  "booking.class": { ro: "Curs", ru: "Занятие" },
+  "booking.date": { ro: "Data", ru: "Дата" },
+  "booking.time": { ro: "Ora", ru: "Время" },
+  "booking.full": { ro: "Complet", ru: "Мест нет" },
+  "booking.spotsLeft": { ro: "locuri libere", ru: "мест свободно" },
+  "booking.namePlaceholder": { ro: "Numele complet", ru: "Полное имя" },
+  "booking.phonePlaceholder": { ro: "Număr de telefon", ru: "Номер телефона" },
+  "booking.emailPlaceholder": { ro: "Adresa de email", ru: "Электронная почта" },
+  "booking.fillAll": { ro: "Completează toate câmpurile", ru: "Заполните все поля" },
+  "booking.alreadyBooked": { ro: "Ați rezervat deja acest curs", ru: "Вы уже записаны на это занятие" },
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

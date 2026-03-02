@@ -14,6 +14,79 @@ export type Database = {
   }
   public: {
     Tables: {
+      booking_settings: {
+        Row: {
+          created_at: string
+          id: string
+          max_participants: number
+          schedule_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          max_participants?: number
+          schedule_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          max_participants?: number
+          schedule_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "booking_settings_schedule_id_fkey"
+            columns: ["schedule_id"]
+            isOneToOne: true
+            referencedRelation: "schedule"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bookings: {
+        Row: {
+          booking_date: string
+          client_email: string
+          client_name: string
+          client_phone: string
+          created_at: string
+          id: string
+          schedule_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          booking_date: string
+          client_email: string
+          client_name: string
+          client_phone: string
+          created_at?: string
+          id?: string
+          schedule_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          booking_date?: string
+          client_email?: string
+          client_name?: string
+          client_phone?: string
+          created_at?: string
+          id?: string
+          schedule_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_schedule_id_fkey"
+            columns: ["schedule_id"]
+            isOneToOne: false
+            referencedRelation: "schedule"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       classes: {
         Row: {
           created_at: string
@@ -41,6 +114,27 @@ export type Database = {
           name?: string
           sort_order?: number
           updated_at?: string
+        }
+        Relationships: []
+      }
+      closed_dates: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          reason: string | null
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          reason?: string | null
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          reason?: string | null
         }
         Relationships: []
       }
