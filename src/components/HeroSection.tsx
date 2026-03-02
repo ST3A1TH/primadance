@@ -1,25 +1,68 @@
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
+import heroSlide1 from "@/assets/hero-slide-1.jpg";
+import heroSlide2 from "@/assets/hero-slide-2.jpg";
+import heroSlide3 from "@/assets/hero-slide-3.jpg";
+import heroRef from "@/assets/hero-ref.jpg";
 import logoTextDark from "@/assets/logo-text-dark.png";
+
+const slides = [heroRef, heroSlide1, heroSlide2, heroSlide3, heroImage];
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const [current, setCurrent] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrent(prev => (prev + 1) % slides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
 
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img src={heroImage} alt="Dance" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/70" />
+      {/* Background Slider */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+          <img
+            src={slides[current]}
+            alt="Dance"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-background/60" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-8 h-[2px] transition-all duration-500 ${
+              i === current ? "bg-foreground" : "bg-foreground/30"
+            }`}
+          />
+        ))}
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-6">
         <motion.img
           src={logoTextDark}
-          alt="Prima"
+          alt="Prima Dance"
           className="h-20 sm:h-28 md:h-36 mx-auto mb-6 object-contain"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

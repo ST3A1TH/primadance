@@ -125,6 +125,12 @@ const translations: Record<string, Record<Lang, string>> = {
   "booking.emailPlaceholder": { ro: "Adresa de email", ru: "Электронная почта" },
   "booking.fillAll": { ro: "Completează toate câmpurile", ru: "Заполните все поля" },
   "booking.alreadyBooked": { ro: "Ați rezervat deja acest curs", ru: "Вы уже записаны на это занятие" },
+  "booking.classFull": { ro: "Clasa este complet rezervată.", ru: "Места закончились." },
+  "booking.spotsRemaining": { ro: "Locuri rămase", ru: "Осталось мест" },
+  "booking.totalSpots": { ro: "Total locuri", ru: "Всего мест" },
+
+  // Overlay
+  "overlay.quote": { ro: "Dansul este poezia piciorului.", ru: "Танец — это поэзия ног." },
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

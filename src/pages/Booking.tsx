@@ -96,7 +96,7 @@ const Booking = () => {
 
   const getMaxParticipants = (scheduleId: string) => {
     const s = settings.find(s => s.schedule_id === scheduleId);
-    return s?.max_participants ?? 15;
+    return s?.max_participants ?? 20;
   };
 
   const isFull = (scheduleId: string) => {
@@ -206,8 +206,8 @@ const Booking = () => {
       <header className="border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logoDark} alt="Prima" className="h-8 w-8 object-cover rounded-full" />
-            <span className="font-display text-foreground text-lg tracking-[0.2em] uppercase">Prima</span>
+            <img src={logoDark} alt="Prima Dance" className="h-8 w-8 object-cover rounded-full" />
+            <span className="font-display text-foreground text-lg tracking-[0.2em] uppercase">Prima Dance</span>
           </Link>
           <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
             <ArrowLeft className="w-4 h-4" /> {t("booking.back")}
@@ -293,13 +293,14 @@ const Booking = () => {
                 <div className="space-y-2">
                   {availableSlots.map(slot => {
                     const full = isFull(slot.id);
-                    const spots = getMaxParticipants(slot.id) - (bookingCounts[slot.id] || 0);
+                    const maxP = getMaxParticipants(slot.id);
+                    const spots = maxP - (bookingCounts[slot.id] || 0);
                     return (
                       <button
                         key={slot.id}
                         disabled={full}
                         onClick={() => { setSelectedSlot(slot); setStep(3); }}
-                        className={`w-full text-left px-5 py-4 border transition-all duration-300 font-body text-sm flex items-center justify-between ${
+                        className={`w-full text-left px-5 py-4 border transition-all duration-300 font-body text-sm ${
                           full
                             ? "border-border text-muted-foreground/40 cursor-not-allowed"
                             : selectedSlot?.id === slot.id
@@ -307,10 +308,20 @@ const Booking = () => {
                             : "border-border text-foreground hover:border-muted-foreground"
                         }`}
                       >
-                        <span>{slot.time}</span>
-                        <span className={`text-xs ${full ? "text-destructive" : "text-muted-foreground"}`}>
-                          {full ? t("booking.full") : `${spots} ${t("booking.spotsLeft")}`}
-                        </span>
+                        <div className="flex items-center justify-between">
+                          <span>{slot.time}</span>
+                          <span className={`text-xs ${full ? "text-destructive" : "text-muted-foreground"}`}>
+                            {full ? t("booking.classFull") : `${t("booking.spotsRemaining")}: ${spots}`}
+                          </span>
+                        </div>
+                        {!full && (
+                          <div className="mt-2 w-full bg-border h-1 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-foreground/60 transition-all duration-500" 
+                              style={{ width: `${((maxP - spots) / maxP) * 100}%` }}
+                            />
+                          </div>
+                        )}
                       </button>
                     );
                   })}

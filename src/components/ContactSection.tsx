@@ -70,7 +70,7 @@ const ContactSection = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Prima Dance Studio Location"
+                title="Prima Dance Location"
               />
             </div>
           </motion.div>
@@ -84,9 +84,9 @@ const ContactSection = () => {
             {/* Brand */}
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
-                <img src={logoDark} alt="Prima" className="h-8 w-8 object-cover rounded-full" />
+                <img src={logoDark} alt="Prima Dance" className="h-8 w-8 object-cover rounded-full" />
                 <span className="font-display text-foreground tracking-[0.2em] uppercase text-sm">
-                  Prima Dance Studio
+                  Prima Dance
                 </span>
               </div>
             </div>
@@ -115,7 +115,7 @@ const ContactSection = () => {
 
           <div className="border-t border-border pt-6 text-center">
             <p className="text-muted-foreground text-xs font-body">
-              © {new Date().getFullYear()} Prima Dance Studio. {t("footer.rights")}
+              © {new Date().getFullYear()} Prima Dance. {t("footer.rights")}
             </p>
           </div>
         </div>
