@@ -4,10 +4,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import logoDark from "@/assets/logo-dark.png";
-import logoLight from "@/assets/logo-light.jpg";
-import logoTextDark from "@/assets/logo-text-dark.png";
-import logoTextLight from "@/assets/logo-text-light.png";
+import iconDark from "@/assets/icon-dark.png";
+import iconLight from "@/assets/icon-light.png";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -31,7 +29,7 @@ const Header = () => {
   // When not scrolled on dark hero, always show white text
   // When scrolled or on light theme, use theme colors
   const isOnHero = !scrolled;
-  const logoSrc = scrolled && theme === "light" ? logoLight : logoDark;
+  const iconSrc = isOnHero ? iconLight : (theme === "light" ? iconDark : iconLight);
 
   return (
     <header
@@ -41,11 +39,12 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
-          <img
-            src={isOnHero ? logoTextLight : (theme === "light" ? logoTextDark : logoTextLight)}
-            alt="Prima Dance Studio"
-            className="h-14 sm:h-16 object-contain"
-          />
+          <img src={iconSrc} alt="Prima Dance" className="h-10 w-auto object-contain" />
+          <span className={`font-display text-xl tracking-[0.2em] uppercase hidden sm:block ${
+            isOnHero ? "text-white" : "text-foreground"
+          }`}>
+            Prima Dance
+          </span>
         </button>
 
         {/* Desktop nav */}
