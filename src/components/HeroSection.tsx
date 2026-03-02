@@ -7,7 +7,7 @@ import heroImage from "@/assets/hero-image.jpg";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
-import logoTextDark from "@/assets/logo-text-dark.png";
+import logoTextLight from "@/assets/logo-text-light.png";
 
 const slides = [heroSlide1, heroSlide2, heroSlide3, heroImage];
 
@@ -63,7 +63,7 @@ const HeroSection = () => {
       {/* Content - always white text on hero regardless of theme */}
       <div className="relative z-10 text-center px-6">
         <motion.img
-          src={logoTextDark}
+          src={logoTextLight}
           alt="Prima Dance"
           className="h-20 sm:h-28 md:h-36 mx-auto mb-6 object-contain"
           initial={{ opacity: 0, y: 20 }}
