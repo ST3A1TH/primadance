@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import logoDark from "@/assets/logo-dark.png";
 import logoLight from "@/assets/logo-light.jpg";
+import logoTextDark from "@/assets/logo-text-dark.png";
+import logoTextLight from "@/assets/logo-text-light.png";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -39,12 +41,11 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
-          <img src={logoSrc} alt="Prima Dance" className="h-10 w-10 object-cover rounded-full" />
-          <span className={`font-display text-xl tracking-[0.2em] uppercase hidden sm:block ${
-            isOnHero ? "text-white" : "text-foreground"
-          }`}>
-            Prima Dance
-          </span>
+          <img
+            src={isOnHero ? logoTextDark : (theme === "light" ? logoTextDark : logoTextLight)}
+            alt="Prima Dance Studio"
+            className="h-10 sm:h-12 object-contain"
+          />
         </button>
 
         {/* Desktop nav */}
@@ -63,18 +64,6 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          {/* Book Now */}
-          <Link
-            to="/booking"
-            className={`hidden sm:inline-block px-5 py-2 text-xs tracking-[0.15em] uppercase font-body transition-colors ${
-              isOnHero
-                ? "bg-white text-black hover:bg-white/90"
-                : "bg-foreground text-background hover:bg-foreground/90"
-            }`}
-          >
-            {t("nav.booking")}
-          </Link>
-
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}

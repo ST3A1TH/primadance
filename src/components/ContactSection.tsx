@@ -3,8 +3,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useRef } from "react";
 import { MapPin, Instagram, Phone } from "lucide-react";
-import logoDark from "@/assets/logo-dark.png";
-import logoLight from "@/assets/logo-light.jpg";
+import logoTextDark from "@/assets/logo-text-dark.png";
+import logoTextLight from "@/assets/logo-text-light.png";
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -12,7 +12,7 @@ const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
-  const logoSrc = theme === "light" ? logoLight : logoDark;
+  const logoSrc = theme === "light" ? logoTextDark : logoTextLight;
 
   return (
     <>
@@ -91,12 +91,7 @@ const ContactSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {/* Brand */}
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3">
-                <img src={logoSrc} alt="Prima Dance" className="h-8 w-8 object-cover rounded-full" />
-                <span className="font-display text-foreground tracking-[0.2em] uppercase text-sm">
-                  Prima Dance
-                </span>
-              </div>
+              <img src={logoSrc} alt="Prima Dance Studio" className="h-10 object-contain object-left" />
             </div>
 
             {/* Contact Info */}
