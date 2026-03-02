@@ -44,7 +44,7 @@ const Header = () => {
           <img
             src={isOnHero ? logoTextLight : (theme === "light" ? logoTextDark : logoTextLight)}
             alt="Prima Dance Studio"
-            className="h-10 sm:h-12 object-contain"
+            className="h-14 sm:h-16 object-contain"
           />
         </button>
 
