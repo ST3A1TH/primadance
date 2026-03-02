@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import logoTextDark from "@/assets/logo-text-dark.png";
 
@@ -40,15 +41,18 @@ const HeroSection = () => {
         >
           {t("hero.subtitle")}
         </motion.p>
-        <motion.a
-          href="#contact"
-          className="inline-block border border-foreground text-foreground px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-foreground hover:text-background transition-all duration-500"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
         >
-          {t("hero.cta")}
-        </motion.a>
+          <Link
+            to="/booking"
+            className="inline-block border border-foreground text-foreground px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-foreground hover:text-background transition-all duration-500"
+          >
+            {t("hero.cta")}
+          </Link>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

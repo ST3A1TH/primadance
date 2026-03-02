@@ -32,29 +32,30 @@ const ContactSection = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <MapPin className="w-4 h-4 text-muted-foreground shrink-0" />
-                <span className="text-foreground text-sm font-body">{t("contact.address")}</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <Phone className="w-4 h-4 text-muted-foreground shrink-0" />
-                <a href="tel:+37300000000" className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors">
-                  +373 00 000 000
+                <a
+                  href="https://maps.google.com/?q=Strada+Nicolae+Testemițanu+19/10+MD-2025+Chișinău"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
+                >
+                  Strada Nicolae Testemițanu 19/10, MD-2025, Chișinău
                 </a>
               </div>
               <div className="flex items-center gap-4">
-                <Mail className="w-4 h-4 text-muted-foreground shrink-0" />
-                <a href="mailto:info@primadance.md" className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors">
-                  info@primadance.md
+                <Phone className="w-4 h-4 text-muted-foreground shrink-0" />
+                <a href="tel:+37361100499" className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors">
+                  061 100 499
                 </a>
               </div>
               <div className="flex items-center gap-4">
                 <Instagram className="w-4 h-4 text-muted-foreground shrink-0" />
                 <a
-                  href="https://instagram.com/primadancestudio"
+                  href="https://instagram.com/primadancemd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
                 >
-                  @primadancestudio
+                  @primadancemd
                 </a>
               </div>
             </div>
@@ -62,7 +63,7 @@ const ContactSection = () => {
             {/* Map */}
             <div className="aspect-video bg-secondary border border-border overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d87095.68285!2d28.77!3d47.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97c3628b769a1%3A0x37d1d6305749dd3c!2sChi%C8%99in%C4%83u%2C%20Moldova!5e0!3m2!1sen!2s!4v1700000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.5!2d28.8!3d47.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sStrada+Nicolae+Testemițanu+19%2F10!5e0!3m2!1sen!2s!4v1700000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "grayscale(1) invert(1) contrast(0.8)" }}
@@ -77,17 +78,46 @@ const ContactSection = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-12">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <img src={logoDark} alt="Prima" className="h-8 w-8 object-cover rounded-full" />
-            <span className="font-display text-foreground tracking-[0.2em] uppercase text-sm">
-              Prima Dance Studio
-            </span>
+      <footer className="bg-background border-t border-border py-12">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            {/* Brand */}
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <img src={logoDark} alt="Prima" className="h-8 w-8 object-cover rounded-full" />
+                <span className="font-display text-foreground tracking-[0.2em] uppercase text-sm">
+                  Prima Dance Studio
+                </span>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <a href="https://instagram.com/primadancemd" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+                <Instagram className="w-4 h-4 shrink-0" /> @primadancemd
+              </a>
+              <a href="tel:+37361100499"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+                <Phone className="w-4 h-4 shrink-0" /> 061 100 499
+              </a>
+            </div>
+
+            {/* Address */}
+            <div>
+              <a href="https://maps.google.com/?q=Strada+Nicolae+Testemițanu+19/10+MD-2025+Chișinău"
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+                <MapPin className="w-4 h-4 shrink-0" /> Strada Nicolae Testemițanu 19/10, MD-2025, Chișinău
+              </a>
+            </div>
           </div>
-          <p className="text-muted-foreground text-xs font-body">
-            © {new Date().getFullYear()} Prima Dance Studio. {t("footer.rights")}
-          </p>
+
+          <div className="border-t border-border pt-6 text-center">
+            <p className="text-muted-foreground text-xs font-body">
+              © {new Date().getFullYear()} Prima Dance Studio. {t("footer.rights")}
+            </p>
+          </div>
         </div>
       </footer>
     </>

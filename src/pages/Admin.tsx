@@ -6,13 +6,14 @@ import AdminSchedule from "@/components/admin/AdminSchedule";
 import AdminClasses from "@/components/admin/AdminClasses";
 import AdminPricing from "@/components/admin/AdminPricing";
 import AdminContent from "@/components/admin/AdminContent";
+import AdminBookings from "@/components/admin/AdminBookings";
 import { LogOut } from "lucide-react";
 
-const tabs = ["Schedule", "Classes", "Pricing", "Content"] as const;
+const tabs = ["Bookings", "Schedule", "Classes", "Pricing", "Content"] as const;
 type Tab = typeof tabs[number];
 
 const Admin = () => {
-  const [activeTab, setActiveTab] = useState<Tab>("Schedule");
+  const [activeTab, setActiveTab] = useState<Tab>("Bookings");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -86,6 +87,7 @@ const Admin = () => {
 
       {/* Content */}
       <div className="container mx-auto px-6 py-8">
+        {activeTab === "Bookings" && <AdminBookings />}
         {activeTab === "Schedule" && <AdminSchedule />}
         {activeTab === "Classes" && <AdminClasses />}
         {activeTab === "Pricing" && <AdminPricing />}
