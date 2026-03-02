@@ -1,13 +1,18 @@
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { useRef } from "react";
-import { MapPin, Instagram, Phone, Mail } from "lucide-react";
+import { MapPin, Instagram, Phone } from "lucide-react";
 import logoDark from "@/assets/logo-dark.png";
+import logoLight from "@/assets/logo-light.jpg";
 
 const ContactSection = () => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  const logoSrc = theme === "light" ? logoLight : logoDark;
 
   return (
     <>
@@ -66,7 +71,10 @@ const ContactSection = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.5!2d28.8!3d47.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sStrada+Nicolae+Testemițanu+19%2F10!5e0!3m2!1sen!2s!4v1700000000"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "grayscale(1) invert(1) contrast(0.8)" }}
+                style={{
+                  border: 0,
+                  filter: theme === "dark" ? "grayscale(1) invert(1) contrast(0.8)" : "grayscale(0.3) contrast(0.95)"
+                }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -84,7 +92,7 @@ const ContactSection = () => {
             {/* Brand */}
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
-                <img src={logoDark} alt="Prima Dance" className="h-8 w-8 object-cover rounded-full" />
+                <img src={logoSrc} alt="Prima Dance" className="h-8 w-8 object-cover rounded-full" />
                 <span className="font-display text-foreground tracking-[0.2em] uppercase text-sm">
                   Prima Dance
                 </span>
