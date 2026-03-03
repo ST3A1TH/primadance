@@ -37,7 +37,7 @@ const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
         <motion.img
           src={logoTextDark}
           alt="Prima Dance"
-          className="h-12 sm:h-14 md:h-16 mb-5 select-none"
+          className="h-20 sm:h-28 md:h-36 mb-5 select-none"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
