@@ -174,6 +174,40 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Test mode: send sample emails to a specific address
+    const body = await req.json().catch(() => ({}));
+    if (body.test_email) {
+      const resend = new Resend(resendKey);
+      const lang = (body.language === "ru" ? "ru" : "ro") as "ro" | "ru";
+      const testName = body.test_name || "Test User";
+      const testClass = "Latin Technique";
+      const testDate = "03.03.2026";
+      const testTime = "18:00";
+
+      const { error: err1 } = await resend.emails.send({
+        from: "Prima Dance <noreply@primadance.md>",
+        to: body.test_email,
+        subject: lang === "ru" ? "Напоминание о занятии – Prima Dance" : "Reamintire lecție – Prima Dance",
+        html: buildReminderHtml(lang, testName, testClass, testDate, testTime),
+      });
+
+      const { error: err2 } = await resend.emails.send({
+        from: "Prima Dance <noreply@primadance.md>",
+        to: body.test_email,
+        subject: lang === "ru" ? "Спасибо за визит – Prima Dance" : "Mulțumim pentru vizită – Prima Dance",
+        html: buildThankYouHtml(lang, testName, testClass),
+      });
+
+      return new Response(JSON.stringify({
+        success: true,
+        test: true,
+        reminderError: err1 || null,
+        thankYouError: err2 || null,
+      }), {
+        status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const resend = new Resend(resendKey);
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
