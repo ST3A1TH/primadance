@@ -8,7 +8,7 @@ import groupTraining2 from "@/assets/gallery/group-training-2.jpg";
 import privateLesson1 from "@/assets/gallery/private-lesson-1.jpg";
 import privateLesson2 from "@/assets/gallery/private-lesson-2.jpg";
 import techniquePractice from "@/assets/gallery/technique-practice.jpg";
-import warmupSession from "@/assets/gallery/warmup-session.jpg";
+
 import movementCloseup from "@/assets/gallery/movement-closeup.jpg";
 
 interface GalleryImage {
@@ -25,7 +25,7 @@ const galleryImages: GalleryImage[] = [
   { src: privateLesson1, alt: "Private Latin lesson", tags: ["private-lesson", "latin-pair"], span: "wide" },
   { src: movementCloseup, alt: "Dance movement close-up", tags: ["technique-practice", "latin-women"], span: "square" },
   { src: techniquePractice, alt: "Technique practice", tags: ["technique-practice", "private-lesson"], span: "tall" },
-  { src: warmupSession, alt: "Warm-up session", tags: ["group-training", "studio-atmosphere"], span: "wide" },
+  
 ];
 
 const GallerySection = () => {
