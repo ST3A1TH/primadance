@@ -77,28 +77,28 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-background/98 backdrop-blur-md border-b border-border overflow-hidden"
+            className="bg-background border-b border-border overflow-hidden"
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navItems.map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollTo(item)}
-                  className="text-muted-foreground hover:text-foreground transition-colors text-sm tracking-[0.15em] uppercase font-body text-left py-2"
+                  className="text-foreground/70 hover:text-foreground transition-colors text-sm tracking-[0.15em] uppercase font-body text-left py-2"
                 >
                   {t(`nav.${item}`)}
                 </button>
               ))}
               <Link
                 to="/my-account"
-                className="text-foreground text-sm tracking-[0.15em] uppercase font-body text-left py-2 border-t border-border pt-4 mt-2"
+                className="text-foreground/70 hover:text-foreground text-sm tracking-[0.15em] uppercase font-body text-left py-2 border-t border-border pt-4 mt-2"
                 onClick={() => setMenuOpen(false)}
               >
                 {t("nav.account")}
               </Link>
               <Link
                 to="/booking"
-                className="text-foreground text-sm tracking-[0.15em] uppercase font-body text-left py-2"
+                className="text-foreground/70 hover:text-foreground text-sm tracking-[0.15em] uppercase font-body text-left py-2"
                 onClick={() => setMenuOpen(false)}
               >
                 {t("nav.booking")}
