@@ -18,7 +18,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["about", "classes", "schedule", "pricing", "contact"];
+  const navItems = ["about", "classes", "gallery", "schedule", "pricing", "contact"];
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
