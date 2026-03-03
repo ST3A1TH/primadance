@@ -66,19 +66,11 @@ const HeroSection = () => {
         <motion.img
           src={logoTextLight}
           alt="Prima Dance"
-          className="h-20 sm:h-28 md:h-36 mx-auto mb-6 object-contain"
+          className="h-32 sm:h-44 md:h-56 mx-auto mb-6 object-contain"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         />
-        <motion.p
-          className="font-display text-white/80 text-lg sm:text-xl md:text-2xl italic tracking-wide mb-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          Dance Studio
-        </motion.p>
         <motion.p
           className="text-white/60 text-sm sm:text-base tracking-[0.2em] uppercase font-body mb-10 max-w-lg mx-auto"
           initial={{ opacity: 0 }}
