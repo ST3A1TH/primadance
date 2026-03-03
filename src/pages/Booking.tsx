@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { z } from "zod";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { motion, AnimatePresence } from "framer-motion";
@@ -103,18 +104,29 @@ const Booking = () => {
     return (bookingCounts[scheduleId] || 0) >= getMaxParticipants(scheduleId);
   };
 
+  const bookingSchema = useMemo(() => z.object({
+    client_name: z.string().trim().min(1, t("booking.fillAll")).max(100, t("booking.fillAll")),
+    client_phone: z.string().trim().min(3, t("booking.fillAll")).max(30, t("booking.fillAll")),
+    client_email: z.string().trim().email(t("booking.fillAll")).max(255, t("booking.fillAll")),
+  }), [t]);
+
   const handleSubmit = async () => {
-    if (!selectedSlot || !selectedDate || !name.trim() || !phone.trim() || !email.trim()) {
+    if (!selectedSlot || !selectedDate) {
       toast.error(t("booking.fillAll"));
+      return;
+    }
+    const result = bookingSchema.safeParse({ client_name: name, client_phone: phone, client_email: email });
+    if (!result.success) {
+      toast.error(result.error.errors[0]?.message || t("booking.fillAll"));
       return;
     }
     setSubmitting(true);
     const { error } = await supabase.from("bookings").insert({
       schedule_id: selectedSlot.id,
       booking_date: format(selectedDate, "yyyy-MM-dd"),
-      client_name: name.trim(),
-      client_phone: phone.trim(),
-      client_email: email.trim().toLowerCase(),
+      client_name: result.data.client_name,
+      client_phone: result.data.client_phone,
+      client_email: result.data.client_email.toLowerCase(),
     });
     setSubmitting(false);
     if (error) {
