@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Globe, Menu, X, Sun, Moon } from "lucide-react";
+import { Globe, Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import iconDark from "@/assets/icon-dark.png";
@@ -9,7 +9,6 @@ import iconLight from "@/assets/icon-light.png";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -29,7 +28,7 @@ const Header = () => {
   // When not scrolled on dark hero, always show white text
   // When scrolled or on light theme, use theme colors
   const isOnHero = !scrolled;
-  const iconSrc = isOnHero ? iconLight : (theme === "light" ? iconDark : iconLight);
+  const iconSrc = isOnHero ? iconLight : iconDark;
 
   return (
     <header
@@ -48,17 +47,6 @@ const Header = () => {
         </button>
 
         <div className="flex items-center gap-3">
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className={`transition-colors duration-300 ${
-              isOnHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
-            }`}
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
-
           {/* Language switcher */}
           <button
             onClick={() => setLang(lang === "ro" ? "ru" : "ro")}

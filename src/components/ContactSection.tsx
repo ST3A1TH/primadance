@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
+
 import { useRef } from "react";
 import { MapPin, Instagram, Phone } from "lucide-react";
 import logoTextDark from "@/assets/logo-text-dark.png";
@@ -10,12 +10,12 @@ import iconLight from "@/assets/icon-light.png";
 
 const ContactSection = () => {
   const { t } = useLanguage();
-  const { theme } = useTheme();
+  
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
-  const logoSrc = theme === "light" ? logoTextDark : logoTextLight;
-  const iconSrc = theme === "light" ? iconDark : iconLight;
+  const logoSrc = logoTextDark;
+  const iconSrc = iconDark;
 
   return (
     <>
@@ -76,7 +76,7 @@ const ContactSection = () => {
                 height="100%"
                 style={{
                   border: 0,
-                  filter: theme === "dark" ? "grayscale(1) invert(1) contrast(0.8)" : "grayscale(0.3) contrast(0.95)"
+                  filter: "grayscale(0.3) contrast(0.95)"
                 }}
                 allowFullScreen
                 loading="lazy"

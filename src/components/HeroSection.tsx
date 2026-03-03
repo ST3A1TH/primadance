@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
+
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
@@ -13,7 +13,7 @@ const slides = [heroSlide1, heroSlide2, heroSlide3, heroImage];
 
 const HeroSection = () => {
   const { t } = useLanguage();
-  const { theme } = useTheme();
+  
   const [current, setCurrent] = useState(0);
 
   const nextSlide = useCallback(() => {
@@ -28,6 +28,8 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Slider */}
+      {/* Static black background to prevent white flash */}
+      <div className="absolute inset-0 bg-black" />
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
