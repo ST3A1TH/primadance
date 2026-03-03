@@ -25,7 +25,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.cta": { ro: "Programează-te", ru: "Записаться" },
 
   // About
-  "about.title": { ro: "Despre Prima", ru: "О Prima" },
+  "about.title": { ro: "Despre Prima Dance", ru: "О Prima Dance" },
   "about.text1": {
     ro: "Prima Dance Studio este un spațiu dedicat artei dansului, unde eleganța, disciplina și pasiunea se întâlnesc. Oferim cursuri pentru toate nivelurile, de la începători la avansați, într-un mediu profesionist și inspirant.",
     ru: "Prima Dance Studio — это пространство, посвящённое искусству танца, где встречаются элегантность, дисциплина и страсть. Мы предлагаем занятия для всех уровней, от начинающих до продвинутых, в профессиональной и вдохновляющей атмосфере."
