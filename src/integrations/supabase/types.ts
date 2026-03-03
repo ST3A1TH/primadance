@@ -51,6 +51,7 @@ export type Database = {
           client_phone: string
           created_at: string
           id: string
+          language: string
           schedule_id: string
           status: string
           updated_at: string
@@ -62,6 +63,7 @@ export type Database = {
           client_phone: string
           created_at?: string
           id?: string
+          language?: string
           schedule_id: string
           status?: string
           updated_at?: string
@@ -73,6 +75,7 @@ export type Database = {
           client_phone?: string
           created_at?: string
           id?: string
+          language?: string
           schedule_id?: string
           status?: string
           updated_at?: string
