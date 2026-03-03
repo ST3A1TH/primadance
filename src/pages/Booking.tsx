@@ -373,13 +373,15 @@ const Booking = () => {
                     value={name}
                     onChange={e => setName(e.target.value)}
                     placeholder={t("booking.namePlaceholder")}
+                    maxLength={100}
                     className="w-full bg-transparent border border-border px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground transition-colors"
                   />
                   <input
                     value={phone}
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={e => setPhone(e.target.value.replace(/[^0-9+\-() ]/g, ""))}
                     placeholder={t("booking.phonePlaceholder")}
                     type="tel"
+                    maxLength={30}
                     className="w-full bg-transparent border border-border px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground transition-colors"
                   />
                   <input
@@ -387,6 +389,7 @@ const Booking = () => {
                     onChange={e => setEmail(e.target.value)}
                     placeholder={t("booking.emailPlaceholder")}
                     type="email"
+                    maxLength={255}
                     className="w-full bg-transparent border border-border px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground transition-colors"
                   />
                 </div>
