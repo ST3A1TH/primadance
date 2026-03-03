@@ -17,6 +17,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.schedule": { ro: "Orar", ru: "Расписание" },
   "nav.pricing": { ro: "Prețuri", ru: "Цены" },
   "nav.contact": { ro: "Contact", ru: "Контакты" },
+  "nav.gallery": { ro: "Galerie", ru: "Галерея" },
   "nav.booking": { ro: "Rezervare", ru: "Запись" },
 
   // Hero
@@ -131,6 +132,10 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // Overlay
   "overlay.quote": { ro: "Dansul este poezia piciorului.", ru: "Танец — это поэзия ног." },
+
+  // Gallery
+  "gallery.title": { ro: "Galerie", ru: "Галерея" },
+  "gallery.subtitle": { ro: "Momente din studio", ru: "Моменты из студии" },
 
   // Account
   "nav.account": { ro: "Contul Meu", ru: "Мой аккаунт" },
