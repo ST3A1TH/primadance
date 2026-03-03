@@ -3,3 +3,5 @@ project_id = "scevrsybmtguihndslhk"
 [functions]
   [functions.auth-email-hook]
     verify_jwt = false
+  [functions.create-booking]
+    verify_jwt = false
