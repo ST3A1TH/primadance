@@ -129,6 +129,7 @@ const Booking = () => {
           client_name: result.data.client_name,
           client_phone: result.data.client_phone,
           client_email: result.data.client_email.toLowerCase(),
+          language: lang,
         },
       });
       setSubmitting(false);

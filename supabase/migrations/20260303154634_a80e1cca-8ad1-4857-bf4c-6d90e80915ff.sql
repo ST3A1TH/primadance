@@ -1,0 +1,1 @@
+ALTER TABLE public.bookings ADD COLUMN language text NOT NULL DEFAULT 'ro';
