@@ -121,23 +121,36 @@ const Booking = () => {
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.from("bookings").insert({
-      schedule_id: selectedSlot.id,
-      booking_date: format(selectedDate, "yyyy-MM-dd"),
-      client_name: result.data.client_name,
-      client_phone: result.data.client_phone,
-      client_email: result.data.client_email.toLowerCase(),
-    });
-    setSubmitting(false);
-    if (error) {
-      if (error.code === "23505") {
-        toast.error(t("booking.alreadyBooked"));
-      } else {
-        toast.error(error.message);
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke("create-booking", {
+        body: {
+          schedule_id: selectedSlot.id,
+          booking_date: format(selectedDate, "yyyy-MM-dd"),
+          client_name: result.data.client_name,
+          client_phone: result.data.client_phone,
+          client_email: result.data.client_email.toLowerCase(),
+        },
+      });
+      setSubmitting(false);
+      if (fnError) {
+        toast.error(fnError.message || "Error");
+        return;
       }
-      return;
+      if (data?.error) {
+        if (data.error === "ALREADY_BOOKED") {
+          toast.error(t("booking.alreadyBooked"));
+        } else if (data.error === "CLASS_FULL") {
+          toast.error(t("booking.classFull"));
+        } else {
+          toast.error(data.error);
+        }
+        return;
+      }
+      setStep(4);
+    } catch (e) {
+      setSubmitting(false);
+      toast.error("Error");
     }
-    setStep(4);
   };
 
   // Calendar rendering
