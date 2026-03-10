@@ -40,7 +40,7 @@ const HeroSection = () => {
         >
           <img
             src={slides[current]}
-            alt="Dance"
+            alt="Latin dance class at Prima Dance studio in Chisinau"
             className="w-full h-full object-cover"
           />
           {/* Always use dark overlay for readability regardless of theme */}

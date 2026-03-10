@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import { useRef } from "react";
-import { MapPin, Instagram, Phone } from "lucide-react";
+import { MapPin, Instagram, Phone, Send, Facebook } from "lucide-react";
 import logoTextDark from "@/assets/logo-text-dark.png";
 import logoTextLight from "@/assets/logo-text-light.png";
 import iconDark from "@/assets/icon-dark.png";
@@ -66,6 +66,28 @@ const ContactSection = () => {
                   @primadancemd
                 </a>
               </div>
+              <div className="flex items-center gap-4">
+                <Send className="w-4 h-4 text-muted-foreground shrink-0" />
+                <a
+                  href="https://t.me/primadancemd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
+                >
+                  Telegram
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <Facebook className="w-4 h-4 text-muted-foreground shrink-0" />
+                <a
+                  href="https://facebook.com/primadancemd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
+                >
+                  Facebook
+                </a>
+              </div>
             </div>
 
             {/* Map */}
@@ -105,6 +127,14 @@ const ContactSection = () => {
               <a href="https://instagram.com/primadancemd" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
                 <Instagram className="w-4 h-4 shrink-0" /> @primadancemd
+              </a>
+              <a href="https://t.me/primadancemd" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+                <Send className="w-4 h-4 shrink-0" /> Telegram
+              </a>
+              <a href="https://facebook.com/primadancemd" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+                <Facebook className="w-4 h-4 shrink-0" /> Facebook
               </a>
               <a href="tel:+37361100499"
                 className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
