@@ -232,16 +232,18 @@ const Booking = () => {
   );
 
   const bookingSeo = useMemo(() => lang === "ro" ? {
-    title: "Rezervare — Prima Dance Chișinău",
-    description: "Rezervă-ți locul la cursurile de dans Prima Dance. Latin, Ballroom, Pro-Am pentru adulți în Chișinău."
+    title: "Rezervare Cursuri de Dans în Chișinău | Prima Dance",
+    description: "Rezervă-ți locul la cursurile de dans Prima Dance în Chișinău. Lecții de latin, ballroom, stretching și Pro-Am pentru adulți. Înscrie-te online!",
+    keywords: "rezervare dans Chișinău, înscrie-te cursuri dans, lecții dans adulți Chișinău, Prima Dance rezervare"
   } : {
-    title: "Запись — Prima Dance Кишинёв",
-    description: "Запишитесь на занятия в Prima Dance. Латинские, бальные танцы и Pro-Am для взрослых в Кишинёве."
+    title: "Запись на Уроки Танцев в Кишинёве | Prima Dance",
+    description: "Запишитесь на занятия танцами в Prima Dance Кишинёв. Латинские, бальные танцы, стретчинг и Pro-Am для взрослых. Онлайн-запись!",
+    keywords: "запись танцы Кишинёв, уроки танцев запись, Prima Dance запись, танцы для взрослых Кишинёв"
   }, [lang]);
 
   return (
     <>
-    <SEOHead title={bookingSeo.title} description={bookingSeo.description} canonical="https://www.primadance.md/booking" />
+    <SEOHead title={bookingSeo.title} description={bookingSeo.description} canonical="https://www.primadance.md/booking" lang={lang} keywords={bookingSeo.keywords} />
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="border-b border-border">

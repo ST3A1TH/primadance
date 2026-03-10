@@ -6,11 +6,14 @@ interface SEOHeadProps {
   canonical?: string;
   ogImage?: string;
   jsonLd?: Record<string, unknown>;
+  lang?: "ro" | "ru";
+  keywords?: string;
 }
 
-const SEOHead = ({ title, description, canonical, ogImage, jsonLd }: SEOHeadProps) => {
+const SEOHead = ({ title, description, canonical, ogImage, jsonLd, lang, keywords }: SEOHeadProps) => {
   useEffect(() => {
     document.title = title;
+    if (lang) document.documentElement.lang = lang;
 
     const setMeta = (name: string, content: string, isProperty = false) => {
       const attr = isProperty ? "property" : "name";
@@ -24,6 +27,7 @@ const SEOHead = ({ title, description, canonical, ogImage, jsonLd }: SEOHeadProp
     };
 
     setMeta("description", description);
+    if (keywords) setMeta("keywords", keywords);
     setMeta("og:title", title, true);
     setMeta("og:description", description, true);
     setMeta("twitter:title", title);
@@ -59,9 +63,10 @@ const SEOHead = ({ title, description, canonical, ogImage, jsonLd }: SEOHeadProp
       const script = document.querySelector('script[data-seo-jsonld]');
       if (script) script.remove();
     };
-  }, [title, description, canonical, ogImage, jsonLd]);
+  }, [title, description, canonical, ogImage, jsonLd, lang, keywords]);
 
   return null;
 };
 
 export default SEOHead;
+
