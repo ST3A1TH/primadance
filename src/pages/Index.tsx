@@ -41,8 +41,8 @@ const jsonLd = {
     "opens": "09:00",
     "closes": "21:00"
   },
-  "image": "https://primadance.lovable.app/og-image.png",
-  "@id": "https://primadance.lovable.app"
+  "image": "https://www.primadance.md/og-image.png",
+  "@id": "https://www.primadance.md"
 };
 
 const Index = () => {
