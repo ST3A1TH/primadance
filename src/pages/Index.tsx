@@ -43,7 +43,18 @@ const jsonLd = {
     "closes": "21:00"
   },
   "image": "https://www.primadance.md/og-image.png",
-  "@id": "https://www.primadance.md"
+  "@id": "https://www.primadance.md",
+  "priceRange": "$$",
+  "currenciesAccepted": "MDL",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Dance Classes",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Latin Dance Classes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ballroom Dance Classes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pro-Am Dance Training" } }
+    ]
+  }
 };
 
 const Index = () => {
@@ -51,11 +62,11 @@ const Index = () => {
   const { lang } = useLanguage();
 
   const seo = useMemo(() => lang === "ro" ? {
-    title: "Prima Dance — Studio de Dans pentru Adulți în Chișinău",
-    description: "Studio de dans modern în Chișinău. Lecții de dans latin, ballroom și Pro-Am pentru adulți. Programează-te online!"
+    title: "Studio de Dans pentru Adulți în Chișinău | Prima Dance",
+    description: "Studio de dans modern în Chișinău. Lecții de dans latin, ballroom și Pro-Am pentru adulți. Programează prima lecție gratuită!"
   } : {
-    title: "Prima Dance — Танцевальная Студия для Взрослых в Кишинёве",
-    description: "Современная танцевальная студия в Кишинёве. Латинские, бальные танцы и Pro-Am для взрослых. Запишитесь онлайн!"
+    title: "Танцевальная Студия для Взрослых в Кишинёве | Prima Dance",
+    description: "Современная танцевальная студия в Кишинёве. Латинские, бальные танцы и Pro-Am для взрослых. Запишитесь на первый урок!"
   }, [lang]);
 
   return (
@@ -64,6 +75,7 @@ const Index = () => {
         title={seo.title}
         description={seo.description}
         canonical="https://www.primadance.md/"
+        ogImage="https://www.primadance.md/og-image.png"
         jsonLd={jsonLd}
       />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
