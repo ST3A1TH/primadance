@@ -137,16 +137,16 @@ const MyAccount = () => {
   };
 
   const accountSeo = useMemo(() => lang === "ro" ? {
-    title: "Contul Meu — Prima Dance",
-    description: "Verifică programările tale la Prima Dance. Vezi cursurile rezervate, datele și statusul."
+    title: "Contul Meu — Programări Dans | Prima Dance Chișinău",
+    description: "Verifică programările tale la Prima Dance Chișinău. Vezi cursurile de dans rezervate, datele și statusul lecțiilor."
   } : {
-    title: "Мой аккаунт — Prima Dance",
-    description: "Проверьте свои записи в Prima Dance. Просмотрите забронированные занятия, даты и статус."
+    title: "Мой Аккаунт — Записи на Танцы | Prima Dance Кишинёв",
+    description: "Проверьте свои записи в Prima Dance Кишинёв. Просмотрите забронированные уроки танцев, даты и статус."
   }, [lang]);
 
   return (
     <>
-    <SEOHead title={accountSeo.title} description={accountSeo.description} canonical="https://www.primadance.md/my-account" />
+    <SEOHead title={accountSeo.title} description={accountSeo.description} canonical="https://www.primadance.md/my-account" lang={lang} />
     <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
