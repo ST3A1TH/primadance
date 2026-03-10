@@ -66,6 +66,28 @@ const ContactSection = () => {
                   @primadancemd
                 </a>
               </div>
+              <div className="flex items-center gap-4">
+                <Send className="w-4 h-4 text-muted-foreground shrink-0" />
+                <a
+                  href="https://t.me/primadancemd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
+                >
+                  Telegram
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <Facebook className="w-4 h-4 text-muted-foreground shrink-0" />
+                <a
+                  href="https://facebook.com/primadancemd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
+                >
+                  Facebook
+                </a>
+              </div>
             </div>
 
             {/* Map */}
