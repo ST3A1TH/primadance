@@ -62,7 +62,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content - always white text on hero regardless of theme */}
-      <div className="relative z-10 text-center px-6">
+      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
         <motion.img
           src={logoTextLight}
           alt="Prima Dance"
@@ -71,18 +71,34 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         />
+        <motion.h1
+          className="text-white text-xl sm:text-2xl md:text-3xl font-display tracking-wide mb-5"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.5 }}
+        >
+          {t("hero.title")}
+        </motion.h1>
         <motion.p
-          className="text-white/60 text-sm sm:text-base tracking-[0.2em] uppercase font-body mb-10 max-w-lg mx-auto"
+          className="text-white/70 text-sm sm:text-base leading-relaxed font-body mb-6 max-w-2xl mx-auto whitespace-pre-line"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
           {t("hero.subtitle")}
         </motion.p>
+        <motion.p
+          className="text-white/40 text-xs sm:text-sm tracking-[0.3em] uppercase font-body mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+        >
+          {t("hero.tags")}
+        </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
         >
           <Link
             to="/booking"
