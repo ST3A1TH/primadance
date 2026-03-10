@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          content_ro: string
+          content_ru: string
+          created_at: string
+          id: string
+          published: boolean
+          slug: string
+          title_ro: string
+          title_ru: string
+          updated_at: string
+        }
+        Insert: {
+          content_ro?: string
+          content_ru?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          slug?: string
+          title_ro?: string
+          title_ru?: string
+          updated_at?: string
+        }
+        Update: {
+          content_ro?: string
+          content_ru?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          slug?: string
+          title_ro?: string
+          title_ru?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       booking_settings: {
         Row: {
           created_at: string
@@ -147,6 +183,30 @@ export type Database = {
         }
         Relationships: []
       }
+      gallery_images: {
+        Row: {
+          alt_text: string
+          created_at: string
+          id: string
+          image_url: string
+          sort_order: number
+        }
+        Insert: {
+          alt_text?: string
+          created_at?: string
+          id?: string
+          image_url: string
+          sort_order?: number
+        }
+        Update: {
+          alt_text?: string
+          created_at?: string
+          id?: string
+          image_url?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
       pricing: {
         Row: {
           category: string
@@ -204,6 +264,36 @@ export type Database = {
           note?: string | null
           sort_order?: number
           time?: string
+        }
+        Relationships: []
+      }
+      seo_settings: {
+        Row: {
+          description_ro: string
+          description_ru: string
+          id: string
+          page_key: string
+          title_ro: string
+          title_ru: string
+          updated_at: string
+        }
+        Insert: {
+          description_ro?: string
+          description_ru?: string
+          id?: string
+          page_key: string
+          title_ro?: string
+          title_ru?: string
+          updated_at?: string
+        }
+        Update: {
+          description_ro?: string
+          description_ru?: string
+          id?: string
+          page_key?: string
+          title_ro?: string
+          title_ru?: string
+          updated_at?: string
         }
         Relationships: []
       }
