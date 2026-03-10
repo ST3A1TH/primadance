@@ -19,7 +19,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["about", "classes", "gallery", "schedule", "contact"];
+  const navItems = ["about", "classes", "gallery", "schedule", "pricing", "contact"];
 
   const scrollTo = (id: string) => {
     setMenuOpen(false);
