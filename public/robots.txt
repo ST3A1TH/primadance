@@ -15,4 +15,4 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/login
 
-Sitemap: https://primadance.lovable.app/sitemap.xml
+Sitemap: https://www.primadance.md/sitemap.xml
