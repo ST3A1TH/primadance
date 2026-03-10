@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Trash2, Plus } from "lucide-react";
+import { handleDbError } from "@/lib/error-handler";
 
 const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
@@ -20,7 +21,7 @@ const AdminSchedule = () => {
 
   const fetchData = async () => {
     const { data, error } = await supabase.from("schedule").select("*").order("day_of_week").order("sort_order");
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else setItems(data || []);
     setLoading(false);
   };
@@ -32,19 +33,19 @@ const AdminSchedule = () => {
     const { error } = await supabase.from("schedule").insert({
       day_of_week: day, time: "18:00", class_name: "New Class", sort_order: maxOrder + 1
     });
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Added"); fetchData(); }
   };
 
   const updateItem = async (id: string, field: string, value: string | number | null) => {
     const { error } = await supabase.from("schedule").update({ [field]: value }).eq("id", id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else fetchData();
   };
 
   const deleteItem = async (id: string) => {
     const { error } = await supabase.from("schedule").delete().eq("id", id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Deleted"); fetchData(); }
   };
 
