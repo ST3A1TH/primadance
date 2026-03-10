@@ -16,7 +16,7 @@ const jsonLd = {
   "@type": "LocalBusiness",
   "name": "Prima Dance",
   "description": "Modern dance studio in Chisinau offering Latin dance classes, ballroom training and Pro-Am competitions for adults.",
-  "url": "https://primadance.lovable.app",
+  "url": "https://www.primadance.md",
   "telephone": "+37361100499",
   "address": {
     "@type": "PostalAddress",
@@ -41,8 +41,8 @@ const jsonLd = {
     "opens": "09:00",
     "closes": "21:00"
   },
-  "image": "https://primadance.lovable.app/og-image.png",
-  "@id": "https://primadance.lovable.app"
+  "image": "https://www.primadance.md/og-image.png",
+  "@id": "https://www.primadance.md"
 };
 
 const Index = () => {
@@ -62,7 +62,7 @@ const Index = () => {
       <SEOHead
         title={seo.title}
         description={seo.description}
-        canonical="https://primadance.lovable.app/"
+        canonical="https://www.primadance.md/"
         jsonLd={jsonLd}
       />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}

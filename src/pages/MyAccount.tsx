@@ -146,7 +146,7 @@ const MyAccount = () => {
 
   return (
     <>
-    <SEOHead title={accountSeo.title} description={accountSeo.description} canonical="https://primadance.lovable.app/my-account" />
+    <SEOHead title={accountSeo.title} description={accountSeo.description} canonical="https://www.primadance.md/my-account" />
     <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
