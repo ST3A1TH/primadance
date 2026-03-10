@@ -75,7 +75,7 @@ const Index = () => {
         title={seo.title}
         description={seo.description}
         canonical="https://www.primadance.md/"
-        ogImage="https://www.primadance.md/og-image.png"
+        ogImage="https://www.primadance.md/og-image.jpeg"
         jsonLd={jsonLd}
       />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
