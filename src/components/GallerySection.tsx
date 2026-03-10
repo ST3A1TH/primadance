@@ -1,31 +1,29 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
+// Static fallback images
 import groupTraining1 from "@/assets/gallery/group-training-1.jpg";
 import groupTraining2 from "@/assets/gallery/group-training-2.jpg";
 import privateLesson1 from "@/assets/gallery/private-lesson-1.jpg";
 import privateLesson2 from "@/assets/gallery/private-lesson-2.jpg";
 import techniquePractice from "@/assets/gallery/technique-practice.jpg";
-
 import movementCloseup from "@/assets/gallery/movement-closeup.jpg";
 
 interface GalleryImage {
   src: string;
   alt: string;
-  tags: string[];
-  span: "tall" | "wide" | "square";
 }
 
-const galleryImages: GalleryImage[] = [
-  { src: groupTraining1, alt: "Group Latin dance training for women at Prima Dance Chisinau", tags: ["group-training", "latin-women"], span: "wide" },
-  { src: privateLesson2, alt: "Private Latin dance lesson close-up at Prima Dance studio", tags: ["private-lesson", "latin-pair"], span: "square" },
-  { src: groupTraining2, alt: "Group ballroom dance class for adults in Chisinau", tags: ["group-training", "latin-women"], span: "tall" },
-  { src: privateLesson1, alt: "Private Latin dance lesson with professional instructor", tags: ["private-lesson", "latin-pair"], span: "wide" },
-  { src: movementCloseup, alt: "Dance movement technique close-up at Prima Dance", tags: ["technique-practice", "latin-women"], span: "square" },
-  { src: techniquePractice, alt: "Ballroom dance technique practice session", tags: ["technique-practice", "private-lesson"], span: "tall" },
-  
+const staticImages: GalleryImage[] = [
+  { src: groupTraining1, alt: "Group Latin dance training for women at Prima Dance Chisinau" },
+  { src: privateLesson2, alt: "Private Latin dance lesson close-up at Prima Dance studio" },
+  { src: groupTraining2, alt: "Group ballroom dance class for adults in Chisinau" },
+  { src: privateLesson1, alt: "Private Latin dance lesson with professional instructor" },
+  { src: movementCloseup, alt: "Dance movement technique close-up at Prima Dance" },
+  { src: techniquePractice, alt: "Ballroom dance technique practice session" },
 ];
 
 const GallerySection = () => {
@@ -33,6 +31,24 @@ const GallerySection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [dbImages, setDbImages] = useState<GalleryImage[]>([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    supabase
+      .from("gallery_images")
+      .select("*")
+      .order("sort_order")
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setDbImages(data.map((img) => ({ src: img.image_url, alt: img.alt_text })));
+        }
+        setLoaded(true);
+      });
+  }, []);
+
+  // Use DB images if available, otherwise fall back to static
+  const galleryImages = dbImages.length > 0 ? dbImages : staticImages;
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -76,35 +92,26 @@ const GallerySection = () => {
             {t("gallery.subtitle")}
           </motion.p>
 
-          {/* Masonry Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[240px]">
-            {galleryImages.map((image, index) => {
-              const spanClass =
-                image.span === "wide"
-                  ? "col-span-2 row-span-1"
-                  : image.span === "tall"
-                  ? "col-span-1 row-span-2"
-                  : "col-span-1 row-span-1";
-
-              return (
-                <motion.div
-                  key={index}
-                  className={`${spanClass} relative overflow-hidden cursor-pointer group`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.08 }}
-                  onClick={() => openLightbox(index)}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
-                </motion.div>
-              );
-            })}
+          {/* Responsive Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {galleryImages.map((image, index) => (
+              <motion.div
+                key={index}
+                className="relative overflow-hidden cursor-pointer group aspect-[4/3]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+                onClick={() => openLightbox(index)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -124,7 +131,6 @@ const GallerySection = () => {
             role="dialog"
             aria-label="Image lightbox"
           >
-            {/* Close button */}
             <button
               onClick={closeLightbox}
               className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10"
@@ -133,7 +139,6 @@ const GallerySection = () => {
               <X className="w-6 h-6" />
             </button>
 
-            {/* Prev */}
             <button
               onClick={(e) => { e.stopPropagation(); goPrev(); }}
               className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors z-10"
@@ -142,7 +147,6 @@ const GallerySection = () => {
               <ChevronLeft className="w-8 h-8" />
             </button>
 
-            {/* Next */}
             <button
               onClick={(e) => { e.stopPropagation(); goNext(); }}
               className="absolute right-4 md:right-8 text-white/50 hover:text-white transition-colors z-10"
@@ -151,7 +155,6 @@ const GallerySection = () => {
               <ChevronRight className="w-8 h-8" />
             </button>
 
-            {/* Image */}
             <motion.img
               key={lightboxIndex}
               src={galleryImages[lightboxIndex].src}
@@ -164,7 +167,6 @@ const GallerySection = () => {
               onClick={(e) => e.stopPropagation()}
             />
 
-            {/* Counter */}
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-xs font-body tracking-widest">
               {lightboxIndex + 1} / {galleryImages.length}
             </div>
