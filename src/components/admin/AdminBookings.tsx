@@ -94,7 +94,7 @@ const AdminBookings = () => {
   const handleStatusToggle = async (booking: Booking) => {
     const newStatus = booking.status === "completed" ? "confirmed" : "completed";
     const { error } = await supabase.from("bookings").update({ status: newStatus }).eq("id", booking.id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else fetchAll();
   };
 
