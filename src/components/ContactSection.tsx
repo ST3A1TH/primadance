@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import { useRef } from "react";
-import { MapPin, Instagram, Phone } from "lucide-react";
+import { MapPin, Instagram, Phone, Send, Facebook } from "lucide-react";
 import logoTextDark from "@/assets/logo-text-dark.png";
 import logoTextLight from "@/assets/logo-text-light.png";
 import iconDark from "@/assets/icon-dark.png";
