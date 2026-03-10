@@ -75,6 +75,7 @@ const Index = () => {
         <DanceOverlaySection />
         <GallerySection />
         <ScheduleSection />
+        <PricingSection />
         <ContactSection />
       </div>
     </>
