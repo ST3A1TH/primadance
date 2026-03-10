@@ -19,12 +19,12 @@ interface GalleryImage {
 }
 
 const galleryImages: GalleryImage[] = [
-  { src: groupTraining1, alt: "Group Latin training", tags: ["group-training", "latin-women"], span: "wide" },
-  { src: privateLesson2, alt: "Private lesson close-up", tags: ["private-lesson", "latin-pair"], span: "square" },
-  { src: groupTraining2, alt: "Group dance class", tags: ["group-training", "latin-women"], span: "tall" },
-  { src: privateLesson1, alt: "Private Latin lesson", tags: ["private-lesson", "latin-pair"], span: "wide" },
-  { src: movementCloseup, alt: "Dance movement close-up", tags: ["technique-practice", "latin-women"], span: "square" },
-  { src: techniquePractice, alt: "Technique practice", tags: ["technique-practice", "private-lesson"], span: "tall" },
+  { src: groupTraining1, alt: "Group Latin dance training for women at Prima Dance Chisinau", tags: ["group-training", "latin-women"], span: "wide" },
+  { src: privateLesson2, alt: "Private Latin dance lesson close-up at Prima Dance studio", tags: ["private-lesson", "latin-pair"], span: "square" },
+  { src: groupTraining2, alt: "Group ballroom dance class for adults in Chisinau", tags: ["group-training", "latin-women"], span: "tall" },
+  { src: privateLesson1, alt: "Private Latin dance lesson with professional instructor", tags: ["private-lesson", "latin-pair"], span: "wide" },
+  { src: movementCloseup, alt: "Dance movement technique close-up at Prima Dance", tags: ["technique-practice", "latin-women"], span: "square" },
+  { src: techniquePractice, alt: "Ballroom dance technique practice session", tags: ["technique-practice", "private-lesson"], span: "tall" },
   
 ];
 
