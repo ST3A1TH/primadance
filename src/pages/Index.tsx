@@ -43,7 +43,18 @@ const jsonLd = {
     "closes": "21:00"
   },
   "image": "https://www.primadance.md/og-image.png",
-  "@id": "https://www.primadance.md"
+  "@id": "https://www.primadance.md",
+  "priceRange": "$$",
+  "currenciesAccepted": "MDL",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Dance Classes",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Latin Dance Classes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ballroom Dance Classes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pro-Am Dance Training" } }
+    ]
+  }
 };
 
 const Index = () => {
