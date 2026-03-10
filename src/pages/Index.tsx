@@ -14,9 +14,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "DanceSchool",
   "name": "Prima Dance",
-  "description": "Modern dance studio in Chisinau offering Latin dance classes, ballroom training and Pro-Am competitions for adults.",
+  "alternateName": ["Prima Dance Studio", "Прима Данс", "Studio de Dans Prima"],
+  "description": "Studio de dans modern în Chișinău. Lecții de dans latin, ballroom și Pro-Am pentru adulți. / Современная танцевальная студия в Кишинёве.",
   "url": "https://www.primadance.md",
   "telephone": "+37361100499",
   "address": {
@@ -31,6 +32,10 @@ const jsonLd = {
     "latitude": 47.02,
     "longitude": 28.8
   },
+  "areaServed": {
+    "@type": "City",
+    "name": "Chișinău"
+  },
   "sameAs": [
     "https://instagram.com/primadancemd",
     "https://t.me/primadancemd",
@@ -42,7 +47,7 @@ const jsonLd = {
     "opens": "09:00",
     "closes": "21:00"
   },
-  "image": "https://www.primadance.md/og-image.png",
+  "image": "https://www.primadance.md/og-image.jpeg",
   "@id": "https://www.primadance.md",
   "priceRange": "$$",
   "currenciesAccepted": "MDL",
@@ -50,9 +55,11 @@ const jsonLd = {
     "@type": "OfferCatalog",
     "name": "Dance Classes",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Latin Dance Classes" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ballroom Dance Classes" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pro-Am Dance Training" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lecții de dans latin / Уроки латинских танцев" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dans de societate / Бальные танцы" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pro-Am" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stretching" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dance Mix" } }
     ]
   }
 };
