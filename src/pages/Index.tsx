@@ -6,6 +6,7 @@ import ClassesSection from "@/components/ClassesSection";
 import DanceOverlaySection from "@/components/DanceOverlaySection";
 import GallerySection from "@/components/GallerySection";
 import ScheduleSection from "@/components/ScheduleSection";
+import PricingSection from "@/components/PricingSection";
 import ContactSection from "@/components/ContactSection";
 import IntroAnimation, { shouldShowIntro } from "@/components/IntroAnimation";
 import SEOHead from "@/components/SEOHead";
