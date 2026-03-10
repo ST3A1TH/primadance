@@ -16,7 +16,7 @@ const jsonLd = {
   "@type": "LocalBusiness",
   "name": "Prima Dance",
   "description": "Modern dance studio in Chisinau offering Latin dance classes, ballroom training and Pro-Am competitions for adults.",
-  "url": "https://primadance.lovable.app",
+  "url": "https://www.primadance.md",
   "telephone": "+37361100499",
   "address": {
     "@type": "PostalAddress",
