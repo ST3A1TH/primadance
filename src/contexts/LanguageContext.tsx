@@ -21,18 +21,54 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.booking": { ro: "Rezervare", ru: "Запись" },
 
   // Hero
-  "hero.subtitle": { ro: "Arta mișcării. Eleganța pasiunii.", ru: "Искусство движения. Элегантность страсти." },
+  "hero.title": {
+    ro: "Studio de dans pentru adulți în Chișinău",
+    ru: "Танцевальная студия для взрослых в Кишинёве"
+  },
+  "hero.subtitle": {
+    ro: "Descoperă lumea dansului într-un studio modern dedicat adulților.\nLa Prima Dance poți învăța dansuri latino și de societate, îți poți îmbunătăți forma fizică și te poți bucura de mișcare și muzică într-o atmosferă elegantă și prietenoasă.",
+    ru: "Откройте для себя мир бальных и латинских танцев в современной студии Prima Dance.\nМы обучаем танцам взрослых — от начинающих до тех, кто мечтает выступать на международных соревнованиях."
+  },
+  "hero.tags": { ro: "Latin • Ballroom • Pro-Am", ru: "Latin • Ballroom • Pro-Am" },
   "hero.cta": { ro: "Programează-te", ru: "Записаться" },
 
   // About
-  "about.title": { ro: "Despre Prima Dance", ru: "О Prima Dance" },
+  "about.title": { ro: "Despre studio", ru: "О студии" },
+  "about.welcome": {
+    ro: "Bine ai venit la Prima Dance",
+    ru: "Добро пожаловать в Prima Dance"
+  },
   "about.text1": {
-    ro: "Prima Dance Studio este un spațiu dedicat artei dansului, unde eleganța, disciplina și pasiunea se întâlnesc. Oferim cursuri pentru toate nivelurile, de la începători la avansați, într-un mediu profesionist și inspirant.",
-    ru: "Prima Dance Studio — это пространство, посвящённое искусству танца, где встречаются элегантность, дисциплина и страсть. Мы предлагаем занятия для всех уровней, от начинающих до продвинутых, в профессиональной и вдохновляющей атмосфере."
+    ro: "Prima Dance este un studio de dans din Chișinău creat special pentru adulți care își doresc să învețe să danseze, să se dezvolte și să descopere bucuria dansului.",
+    ru: "Prima Dance — это современная танцевальная студия в Кишинёве, созданная для взрослых, которые хотят научиться красиво танцевать, улучшить физическую форму и получить удовольствие от движения и музыки."
   },
   "about.text2": {
-    ro: "Misiunea noastră este să oferim fiecărui elev o experiență transformatoare prin dans — un drum spre grație, încredere și libertate de expresie.",
-    ru: "Наша миссия — дать каждому ученику трансформирующий опыт через танец — путь к грации, уверенности и свободе самовыражения."
+    ro: "În studioul nostru se întâlnesc oameni care vin să danseze pentru plăcere, pentru sănătate, pentru socializare sau pentru a participa la competiții.",
+    ru: "Наша студия объединяет людей, которые приходят танцевать для себя, для настроения, для спорта или для участия в соревнованиях."
+  },
+  "about.listTitle": {
+    ro: "La Prima Dance vei găsi:",
+    ru: "В Prima Dance вы найдете:"
+  },
+  "about.list1": {
+    ro: "o sală de dans spațioasă și profesional echipată",
+    ru: "просторный профессиональный танцевальный зал"
+  },
+  "about.list2": {
+    ro: "antrenori experimentați",
+    ru: "опытных тренеров"
+  },
+  "about.list3": {
+    ro: "o atmosferă confortabilă și elegantă",
+    ru: "комфортную атмосферу"
+  },
+  "about.list4": {
+    ro: "programe moderne de antrenament",
+    ru: "современные программы тренировок"
+  },
+  "about.closing": {
+    ro: "Lucrăm cu persoane de orice nivel — de la începători care fac primii pași în dans până la cei care se pregătesc pentru competiții internaționale.",
+    ru: "Мы работаем с учениками любого уровня — от тех, кто делает первые шаги в танце, до тех, кто готовится к выступлениям на международных турнирах."
   },
 
   // Classes
