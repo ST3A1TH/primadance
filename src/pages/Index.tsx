@@ -62,7 +62,7 @@ const Index = () => {
       <SEOHead
         title={seo.title}
         description={seo.description}
-        canonical="https://primadance.lovable.app/"
+        canonical="https://www.primadance.md/"
         jsonLd={jsonLd}
       />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}

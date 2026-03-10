@@ -237,7 +237,7 @@ const Booking = () => {
 
   return (
     <>
-    <SEOHead title={bookingSeo.title} description={bookingSeo.description} canonical="https://primadance.lovable.app/booking" />
+    <SEOHead title={bookingSeo.title} description={bookingSeo.description} canonical="https://www.primadance.md/booking" />
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="border-b border-border">
