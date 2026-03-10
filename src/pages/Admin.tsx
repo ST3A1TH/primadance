@@ -4,17 +4,25 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import AdminSchedule from "@/components/admin/AdminSchedule";
 import AdminClasses from "@/components/admin/AdminClasses";
-import AdminPricing from "@/components/admin/AdminPricing";
 import AdminContent from "@/components/admin/AdminContent";
 import AdminBookings from "@/components/admin/AdminBookings";
-import { LogOut } from "lucide-react";
+import AdminBlog from "@/components/admin/AdminBlog";
+import AdminSEO from "@/components/admin/AdminSEO";
+import AdminGallery from "@/components/admin/AdminGallery";
+import { LogOut, Globe } from "lucide-react";
 
-const tabs = ["Bookings", "Schedule", "Classes", "Pricing", "Content"] as const;
+const tabs = ["Bookings", "Schedule", "Classes", "Content", "Gallery", "Blog", "SEO"] as const;
 type Tab = typeof tabs[number];
+
+const tabLabels: Record<"ro" | "ru", Record<Tab, string>> = {
+  ro: { Bookings: "Rezervări", Schedule: "Orar", Classes: "Cursuri", Content: "Conținut", Gallery: "Galerie", Blog: "Blog", SEO: "SEO" },
+  ru: { Bookings: "Записи", Schedule: "Расписание", Classes: "Занятия", Content: "Контент", Gallery: "Галерея", Blog: "Блог", SEO: "SEO" },
+};
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState<Tab>("Bookings");
   const [loading, setLoading] = useState(true);
+  const [adminLang, setAdminLang] = useState<"ro" | "ru">("ro");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,26 +68,36 @@ const Admin = () => {
       <div className="border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="font-display text-2xl text-foreground">Prima Dance Admin</h1>
-          <button onClick={handleLogout} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
-            <LogOut className="w-4 h-4" /> Logout
-          </button>
+          <div className="flex items-center gap-4">
+            {/* Language Selector */}
+            <button
+              onClick={() => setAdminLang(adminLang === "ro" ? "ru" : "ro")}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-body"
+            >
+              <Globe className="w-4 h-4" />
+              <span className="text-xs tracking-[0.15em] uppercase">{adminLang === "ro" ? "RU" : "RO"}</span>
+            </button>
+            <button onClick={handleLogout} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+              <LogOut className="w-4 h-4" /> {adminLang === "ro" ? "Deconectare" : "Выйти"}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-border">
-        <div className="container mx-auto px-6 flex gap-0">
+      <div className="border-b border-border overflow-x-auto">
+        <div className="container mx-auto px-6 flex gap-0 min-w-max">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-3 text-sm font-body tracking-[0.1em] uppercase transition-colors border-b-2 ${
+              className={`px-5 py-3 text-sm font-body tracking-[0.1em] uppercase transition-colors border-b-2 whitespace-nowrap ${
                 activeTab === tab
                   ? "text-foreground border-foreground"
                   : "text-muted-foreground border-transparent hover:text-foreground"
               }`}
             >
-              {tab}
+              {tabLabels[adminLang][tab]}
             </button>
           ))}
         </div>
@@ -90,8 +108,10 @@ const Admin = () => {
         {activeTab === "Bookings" && <AdminBookings />}
         {activeTab === "Schedule" && <AdminSchedule />}
         {activeTab === "Classes" && <AdminClasses />}
-        {activeTab === "Pricing" && <AdminPricing />}
         {activeTab === "Content" && <AdminContent />}
+        {activeTab === "Gallery" && <AdminGallery lang={adminLang} />}
+        {activeTab === "Blog" && <AdminBlog lang={adminLang} />}
+        {activeTab === "SEO" && <AdminSEO lang={adminLang} />}
       </div>
     </div>
   );
