@@ -110,7 +110,7 @@ const AdminBookings = () => {
   const handleEditSave = async () => {
     if (!editingBooking) return;
     const { error } = await supabase.from("bookings").update(editForm).eq("id", editingBooking.id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Updated"); setEditingBooking(null); fetchAll(); }
   };
 
