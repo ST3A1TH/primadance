@@ -103,7 +103,7 @@ const AdminBookings = () => {
       toast.error("Fill all fields"); return;
     }
     const { error } = await supabase.from("bookings").insert(addForm);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Added"); setShowAddModal(false); setAddForm({ schedule_id: "", booking_date: "", client_name: "", client_phone: "", client_email: "" }); fetchAll(); }
   };
 
