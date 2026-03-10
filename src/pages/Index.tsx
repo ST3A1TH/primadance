@@ -70,10 +70,12 @@ const Index = () => {
 
   const seo = useMemo(() => lang === "ro" ? {
     title: "Studio de Dans pentru Adulți în Chișinău | Prima Dance",
-    description: "Studio de dans modern în Chișinău. Lecții de dans latin, ballroom și Pro-Am pentru adulți. Programează prima lecție gratuită!"
+    description: "Studio de dans modern în Chișinău. Lecții de dans latin, ballroom, stretching și Pro-Am pentru adulți. Programează prima lecție gratuită!",
+    keywords: "studio dans Chișinău, lecții dans adulți, dans latin Chișinău, dans de societate, Pro-Am Moldova, cursuri dans, Prima Dance, stretching Chișinău, dance mix"
   } : {
     title: "Танцевальная Студия для Взрослых в Кишинёве | Prima Dance",
-    description: "Современная танцевальная студия в Кишинёве. Латинские, бальные танцы и Pro-Am для взрослых. Запишитесь на первый урок!"
+    description: "Современная танцевальная студия в Кишинёве. Латинские, бальные танцы, стретчинг и Pro-Am для взрослых. Запишитесь на первый урок!",
+    keywords: "танцевальная студия Кишинёв, уроки танцев для взрослых, латинские танцы Кишинёв, бальные танцы, Pro-Am Молдова, Prima Dance, стретчинг Кишинёв, танцы Кишинёв"
   }, [lang]);
 
   return (
@@ -84,6 +86,8 @@ const Index = () => {
         canonical="https://www.primadance.md/"
         ogImage="https://www.primadance.md/og-image.jpeg"
         jsonLd={jsonLd}
+        lang={lang}
+        keywords={seo.keywords}
       />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
       <div className="min-h-screen bg-background">
