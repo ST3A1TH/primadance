@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { handleDbError } from "@/lib/error-handler";
 import { format, addDays, startOfWeek, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isSameMonth } from "date-fns";
 import { ChevronLeft, ChevronRight, Trash2, Plus, Edit2, Check, X, Users, Lock, Unlock, Eye } from "lucide-react";
 
