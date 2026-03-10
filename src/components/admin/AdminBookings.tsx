@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { handleDbError } from "@/lib/error-handler";
 import { format, addDays, startOfWeek, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isSameMonth } from "date-fns";
 import { ChevronLeft, ChevronRight, Trash2, Plus, Edit2, Check, X, Users, Lock, Unlock, Eye } from "lucide-react";
 
@@ -86,14 +87,14 @@ const AdminBookings = () => {
 
   const handleDelete = async (id: string) => {
     const { error } = await supabase.from("bookings").delete().eq("id", id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Deleted"); fetchAll(); }
   };
 
   const handleStatusToggle = async (booking: Booking) => {
     const newStatus = booking.status === "completed" ? "confirmed" : "completed";
     const { error } = await supabase.from("bookings").update({ status: newStatus }).eq("id", booking.id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else fetchAll();
   };
 
@@ -102,14 +103,14 @@ const AdminBookings = () => {
       toast.error("Fill all fields"); return;
     }
     const { error } = await supabase.from("bookings").insert(addForm);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Added"); setShowAddModal(false); setAddForm({ schedule_id: "", booking_date: "", client_name: "", client_phone: "", client_email: "" }); fetchAll(); }
   };
 
   const handleEditSave = async () => {
     if (!editingBooking) return;
     const { error } = await supabase.from("bookings").update(editForm).eq("id", editingBooking.id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Updated"); setEditingBooking(null); fetchAll(); }
   };
 

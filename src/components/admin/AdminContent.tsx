@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { handleDbError } from "@/lib/error-handler";
 
 interface ContentItem {
   id: string;
@@ -15,7 +16,7 @@ const AdminContent = () => {
 
   const fetchData = async () => {
     const { data, error } = await supabase.from("site_content").select("*").order("key");
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else setItems(data || []);
     setLoading(false);
   };
@@ -24,7 +25,7 @@ const AdminContent = () => {
 
   const updateItem = async (id: string, field: string, value: string) => {
     const { error } = await supabase.from("site_content").update({ [field]: value }).eq("id", id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else toast.success("Saved");
   };
 

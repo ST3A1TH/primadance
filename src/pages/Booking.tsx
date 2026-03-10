@@ -135,7 +135,8 @@ const Booking = () => {
       });
       setSubmitting(false);
       if (fnError) {
-        toast.error(fnError.message || "Error");
+        console.error("[Booking Error]", fnError);
+        toast.error(lang === "ro" ? "A apărut o eroare. Încercați din nou." : "Произошла ошибка. Попробуйте снова.");
         return;
       }
       if (data?.error) {
@@ -143,8 +144,11 @@ const Booking = () => {
           toast.error(t("booking.alreadyBooked"));
         } else if (data.error === "CLASS_FULL") {
           toast.error(t("booking.classFull"));
+        } else if (data.error === "RATE_LIMITED") {
+          toast.error(lang === "ro" ? "Prea multe cereri. Așteptați câteva minute." : "Слишком много запросов. Подождите несколько минут.");
         } else {
-          toast.error(data.error);
+          console.error("[Booking Error]", data.error);
+          toast.error(lang === "ro" ? "A apărut o eroare. Încercați din nou." : "Произошла ошибка. Попробуйте снова.");
         }
         return;
       }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Trash2, Plus } from "lucide-react";
+import { handleDbError } from "@/lib/error-handler";
 
 interface PricingItem {
   id: string;
@@ -18,7 +19,7 @@ const AdminPricing = () => {
 
   const fetchData = async () => {
     const { data, error } = await supabase.from("pricing").select("*").order("category").order("sort_order");
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else setItems(data || []);
     setLoading(false);
   };
@@ -31,18 +32,18 @@ const AdminPricing = () => {
     const { error } = await supabase.from("pricing").insert({
       category, label_ro: "New", label_ru: "Новый", price: "0 lei", sort_order: maxOrder + 1
     });
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Added"); fetchData(); }
   };
 
   const updateItem = async (id: string, field: string, value: string) => {
     const { error } = await supabase.from("pricing").update({ [field]: value }).eq("id", id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
   };
 
   const deleteItem = async (id: string) => {
     const { error } = await supabase.from("pricing").delete().eq("id", id);
-    if (error) toast.error(error.message);
+    if (error) toast.error(handleDbError(error));
     else { toast.success("Deleted"); fetchData(); }
   };
 
