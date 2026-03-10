@@ -136,7 +136,17 @@ const MyAccount = () => {
     );
   };
 
+  const accountSeo = useMemo(() => lang === "ro" ? {
+    title: "Contul Meu — Prima Dance",
+    description: "Verifică programările tale la Prima Dance. Vezi cursurile rezervate, datele și statusul."
+  } : {
+    title: "Мой аккаунт — Prima Dance",
+    description: "Проверьте свои записи в Prima Dance. Просмотрите забронированные занятия, даты и статус."
+  }, [lang]);
+
   return (
+    <>
+    <SEOHead title={accountSeo.title} description={accountSeo.description} canonical="https://primadance.lovable.app/my-account" />
     <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">

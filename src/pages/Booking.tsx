@@ -227,7 +227,17 @@ const Booking = () => {
     </div>
   );
 
+  const bookingSeo = useMemo(() => lang === "ro" ? {
+    title: "Rezervare — Prima Dance Chișinău",
+    description: "Rezervă-ți locul la cursurile de dans Prima Dance. Latin, Ballroom, Pro-Am pentru adulți în Chișinău."
+  } : {
+    title: "Запись — Prima Dance Кишинёв",
+    description: "Запишитесь на занятия в Prima Dance. Латинские, бальные танцы и Pro-Am для взрослых в Кишинёве."
+  }, [lang]);
+
   return (
+    <>
+    <SEOHead title={bookingSeo.title} description={bookingSeo.description} canonical="https://primadance.lovable.app/booking" />
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="border-b border-border">
