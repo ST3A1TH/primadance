@@ -266,6 +266,7 @@ const MyAccount = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
