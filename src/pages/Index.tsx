@@ -69,13 +69,13 @@ const Index = () => {
   const { lang } = useLanguage();
 
   const seo = useMemo(() => lang === "ro" ? {
-    title: "Studio de Dans pentru Adulți în Chișinău | Prima Dance",
-    description: "Studio de dans modern în Chișinău. Lecții de dans latin, ballroom, stretching și Pro-Am pentru adulți. Programează prima lecție gratuită!",
-    keywords: "studio dans Chișinău, lecții dans adulți, dans latin Chișinău, dans de societate, Pro-Am Moldova, cursuri dans, Prima Dance, stretching Chișinău, dance mix"
+    title: "Prima Dance — Studio de Dans pentru Adulți în Chișinău",
+    description: "Prima Dance este un studio de dans modern în Chișinău, Moldova. Lecții de dans latin, ballroom, stretching și Pro-Am pentru adulți. Programează prima lecție!",
+    keywords: "Prima Dance, studio dans Chișinău, lecții dans adulți, dans latin Chișinău, dans de societate, Pro-Am Moldova, cursuri dans, stretching Chișinău, dance mix"
   } : {
-    title: "Танцевальная Студия для Взрослых в Кишинёве | Prima Dance",
-    description: "Современная танцевальная студия в Кишинёве. Латинские, бальные танцы, стретчинг и Pro-Am для взрослых. Запишитесь на первый урок!",
-    keywords: "танцевальная студия Кишинёв, уроки танцев для взрослых, латинские танцы Кишинёв, бальные танцы, Pro-Am Молдова, Prima Dance, стретчинг Кишинёв, танцы Кишинёв"
+    title: "Prima Dance — Танцевальная Студия для Взрослых в Кишинёве",
+    description: "Prima Dance — современная танцевальная студия в Кишинёве, Молдова. Латинские, бальные танцы, стретчинг и Pro-Am для взрослых. Запишитесь на первый урок!",
+    keywords: "Prima Dance, танцевальная студия Кишинёв, уроки танцев для взрослых, латинские танцы Кишинёв, бальные танцы, Pro-Am Молдова, стретчинг Кишинёв"
   }, [lang]);
 
   return (
