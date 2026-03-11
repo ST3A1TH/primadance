@@ -183,6 +183,42 @@ export type Database = {
         }
         Relationships: []
       }
+      faqs: {
+        Row: {
+          answer_ro: string
+          answer_ru: string
+          created_at: string
+          id: string
+          published: boolean
+          question_ro: string
+          question_ru: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          answer_ro?: string
+          answer_ru?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          question_ro?: string
+          question_ru?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          answer_ro?: string
+          answer_ru?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          question_ro?: string
+          question_ru?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       gallery_images: {
         Row: {
           alt_text: string

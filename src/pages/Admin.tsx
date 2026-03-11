@@ -8,15 +8,16 @@ import AdminContent from "@/components/admin/AdminContent";
 import AdminBookings from "@/components/admin/AdminBookings";
 import AdminBlog from "@/components/admin/AdminBlog";
 import AdminSEO from "@/components/admin/AdminSEO";
+import AdminFAQ from "@/components/admin/AdminFAQ";
 import AdminGallery from "@/components/admin/AdminGallery";
 import { LogOut, Globe } from "lucide-react";
 
-const tabs = ["Bookings", "Schedule", "Classes", "Content", "Gallery", "Blog", "SEO"] as const;
+const tabs = ["Bookings", "Schedule", "Classes", "Content", "Gallery", "Blog", "FAQ", "SEO"] as const;
 type Tab = typeof tabs[number];
 
 const tabLabels: Record<"ro" | "ru", Record<Tab, string>> = {
-  ro: { Bookings: "Rezervări", Schedule: "Orar", Classes: "Cursuri", Content: "Conținut", Gallery: "Galerie", Blog: "Blog", SEO: "SEO" },
-  ru: { Bookings: "Записи", Schedule: "Расписание", Classes: "Занятия", Content: "Контент", Gallery: "Галерея", Blog: "Блог", SEO: "SEO" },
+  ro: { Bookings: "Rezervări", Schedule: "Orar", Classes: "Cursuri", Content: "Conținut", Gallery: "Galerie", Blog: "Blog", FAQ: "FAQ", SEO: "SEO" },
+  ru: { Bookings: "Записи", Schedule: "Расписание", Classes: "Занятия", Content: "Контент", Gallery: "Галерея", Blog: "Блог", FAQ: "FAQ", SEO: "SEO" },
 };
 
 const Admin = () => {
@@ -111,6 +112,7 @@ const Admin = () => {
         {activeTab === "Content" && <AdminContent />}
         {activeTab === "Gallery" && <AdminGallery lang={adminLang} />}
         {activeTab === "Blog" && <AdminBlog lang={adminLang} />}
+        {activeTab === "FAQ" && <AdminFAQ lang={adminLang} />}
         {activeTab === "SEO" && <AdminSEO lang={adminLang} />}
       </div>
     </div>
