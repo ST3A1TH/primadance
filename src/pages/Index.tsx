@@ -90,7 +90,7 @@ const Index = () => {
         keywords={seo.keywords}
       />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
-      <div className="min-h-screen bg-background">
+      <main className="min-h-screen bg-background">
         <Header />
         <HeroSection />
         <AboutSection />
@@ -100,7 +100,7 @@ const Index = () => {
         <ScheduleSection />
         
         <ContactSection />
-      </div>
+      </main>
     </>
   );
 };
