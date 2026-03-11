@@ -30,6 +30,15 @@
     <link rel="alternate" hreflang="ru" href="https://www.primadance.md/" />
     <link rel="alternate" hreflang="x-default" href="https://www.primadance.md/" />
 
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    <!-- DNS prefetch -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://connect.facebook.net" />
+
     <meta property="og:url" content="https://www.primadance.md/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Prima Dance" />
@@ -38,6 +47,9 @@
     <meta property="og:title" content="Prima Dance — Studio de Dans pentru Adulți în Chișinău" />
     <meta property="og:description" content="Studio de dans modern în Chișinău. Lecții de dans latin, ballroom și Pro-Am pentru adulți." />
     <meta property="og:image" content="https://www.primadance.md/og-image.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Prima Dance — Studio de dans modern în Chișinău" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content="primadance.md" />
@@ -46,12 +58,12 @@
     <meta name="twitter:description" content="Studio de dans modern în Chișinău. Lecții de dans latin, ballroom și Pro-Am pentru adulți." />
     <meta name="twitter:image" content="https://www.primadance.md/og-image.jpeg" />
 
-    <!-- Structured Data - visible to crawlers before JS loads -->
+    <!-- Structured Data - DanceSchool -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "DanceSchool",
-      "@id": "https://www.primadance.md",
+      "@type": ["DanceSchool", "LocalBusiness", "SportsActivityLocation"],
+      "@id": "https://www.primadance.md/#organization",
       "name": "Prima Dance",
       "alternateName": ["Prima Dance Studio", "Прима Данс", "Studio de Dans Prima", "Prima Dance Chișinău", "Prima Dance Кишинёв"],
       "description": "Studio de dans modern în Chișinău. Lecții de dans latin, ballroom, stretching și Pro-Am pentru adulți. Современная танцевальная студия в Кишинёве.",
@@ -68,8 +80,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 47.02,
-        "longitude": 28.8
+        "latitude": 47.0228,
+        "longitude": 28.8353
       },
       "areaServed": [
         { "@type": "City", "name": "Chișinău" },
@@ -80,26 +92,80 @@
         "https://t.me/primadancemd",
         "https://facebook.com/primadancemd"
       ],
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
       "image": "https://www.primadance.md/og-image.jpeg",
       "logo": "https://www.primadance.md/og-image.jpeg",
       "priceRange": "$$",
       "currenciesAccepted": "MDL",
-      "paymentAccepted": "Cash, Card",
+      "paymentAccepted": ["Cash", "Card"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "25",
+        "bestRating": "5"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Cursuri de Dans / Уроки Танцев",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lecții de Dans Latin / Уроки латинских танцев", "description": "Cha-cha, Samba, Rumba, Jive, Paso Doble" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dans de Societate / Бальные танцы", "description": "Vals, Tango, Foxtrot, Quickstep" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pro-Am", "description": "Professional-Amateur dance partnerships" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stretching / Стретчинг" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dance Mix" } }
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Lecții de Dans Latin / Уроки латинских танцев",
+              "description": "Cha-cha, Samba, Rumba, Jive, Paso Doble — lecții pentru adulți",
+              "provider": {"@id": "https://www.primadance.md/#organization"}
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dans de Societate / Бальные танцы",
+              "description": "Vals, Tango, Foxtrot, Quickstep — cursuri pentru toate nivelurile",
+              "provider": {"@id": "https://www.primadance.md/#organization"}
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pro-Am",
+              "description": "Professional-Amateur dance partnerships for competitions",
+              "provider": {"@id": "https://www.primadance.md/#organization"}
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Stretching / Стретчинг",
+              "description": "Exerciții de flexibilitate și întindere / Упражнения на гибкость",
+              "provider": {"@id": "https://www.primadance.md/#organization"}
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dance Mix",
+              "description": "Mix de stiluri de dans — distractiv și energizant",
+              "provider": {"@id": "https://www.primadance.md/#organization"}
+            }
+          }
         ]
       }
     }
@@ -113,6 +179,86 @@
       "name": "Prima Dance",
       "alternateName": ["Prima Dance Studio", "Прима Данс"],
       "url": "https://www.primadance.md"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ce stiluri de dans predați la Prima Dance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La Prima Dance predăm dansuri latino (Cha-cha, Samba, Rumba, Jive, Paso Doble), dansuri de societate (Vals, Tango, Foxtrot, Quickstep), Pro-Am, Stretching și Dance Mix."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие танцы можно изучать в Prima Dance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "В Prima Dance мы обучаем латинским танцам (Ча-ча-ча, Самба, Румба, Джайв, Пасодобль), бальным танцам (Вальс, Танго, Фокстрот, Квикстеп), Pro-Am, стретчингу и Dance Mix."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Pot participa la lecții fără experiență anterioară?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da! Cursurile noastre sunt pentru toate nivelurile — de la începători până la avansați. Profesorii noștri se adaptează ritmului fiecărui cursant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли записаться без опыта?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Конечно! Наши занятия подходят для всех уровней — от новичков до продвинутых танцоров. Преподаватели адаптируются к темпу каждого ученика."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Unde se află studioul Prima Dance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Studioul nostru se află pe Strada Nicolae Testemițanu 19/10, MD-2025, Chișinău, Moldova. Ne puteți contacta la numărul 061 100 499."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Care este programul studioului?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Luni - Vineri: 09:00 - 21:00, Sâmbătă: 10:00 - 18:00. Programul exact al lecțiilor îl puteți consulta pe site-ul nostru."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Prima Dance",
+          "item": "https://www.primadance.md/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rezervare / Запись",
+          "item": "https://www.primadance.md/booking"
+        }
+      ]
     }
     </script>
 
@@ -148,8 +294,14 @@
       <h1>Prima Dance — Studio de Dans pentru Adulți în Chișinău</h1>
       <p>Prima Dance este un studio de dans modern în Chișinău, Moldova. Oferim lecții de dans latin (cha-cha, samba, rumba), dans de societate (vals, tango, foxtrot), stretching, dance mix și Pro-Am pentru adulți.</p>
       <p>Prima Dance — современная танцевальная студия в Кишинёве, Молдова. Мы предлагаем уроки латинских танцев, бальных танцев, стретчинг, dance mix и Pro-Am для взрослых.</p>
+      <h2>Întrebări frecvente / Часто задаваемые вопросы</h2>
+      <p><strong>Ce stiluri de dans predați?</strong> Latin (Cha-cha, Samba, Rumba, Jive, Paso Doble), Ballroom (Vals, Tango, Foxtrot, Quickstep), Pro-Am, Stretching, Dance Mix.</p>
+      <p><strong>Pot participa fără experiență?</strong> Da! Cursurile sunt pentru toate nivelurile.</p>
       <p>Adresa: Strada Nicolae Testemițanu 19/10, Chișinău. Tel: +373 61 100 499</p>
       <p>Адрес: ул. Николае Тестемицану 19/10, Кишинёв. Тел: +373 61 100 499</p>
+      <nav>
+        <a href="/booking">Rezervare / Запись</a>
+      </nav>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>

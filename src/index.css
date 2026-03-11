@@ -104,6 +104,12 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+
+  /* Improve CLS - reserve space for images */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
 }
 
 html {
@@ -120,4 +126,14 @@ html {
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--muted));
   border-radius: 3px;
+}
+
+/* Reduce CLS from font loading */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
 }
