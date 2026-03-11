@@ -8,7 +8,6 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import Index from "./pages/Index";
 import Booking from "./pages/Booking";
 import Admin from "./pages/Admin";
-import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import MyAccount from "./pages/MyAccount";
 import NotFound from "./pages/NotFound";
