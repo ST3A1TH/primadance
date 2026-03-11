@@ -112,6 +112,7 @@ const Admin = () => {
         {activeTab === "Content" && <AdminContent />}
         {activeTab === "Gallery" && <AdminGallery lang={adminLang} />}
         {activeTab === "Blog" && <AdminBlog lang={adminLang} />}
+        {activeTab === "FAQ" && <AdminFAQ lang={adminLang} />}
         {activeTab === "SEO" && <AdminSEO lang={adminLang} />}
       </div>
     </div>
