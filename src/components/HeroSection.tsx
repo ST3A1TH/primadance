@@ -40,8 +40,10 @@ const HeroSection = () => {
         >
           <img
             src={slides[current]}
-            alt="Latin dance class at Prima Dance studio in Chisinau"
+            alt={`Dance class at Prima Dance studio in Chisinau - ${current === 0 ? 'Latin dance training' : current === 1 ? 'Ballroom dance lesson' : 'Professional dance studio'}`}
             className="w-full h-full object-cover"
+            fetchPriority={current === 0 ? "high" : undefined}
+            decoding={current === 0 ? "sync" : "async"}
           />
           {/* Always use dark overlay for readability regardless of theme */}
           <div className="absolute inset-0 bg-black/55" />
@@ -65,8 +67,10 @@ const HeroSection = () => {
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
         <motion.img
           src={logoTextLight}
-          alt="Prima Dance"
+          alt="Prima Dance — Studio de dans pentru adulți în Chișinău"
           className="h-32 sm:h-44 md:h-56 mx-auto mb-6 object-contain"
+          width={400}
+          height={200}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
