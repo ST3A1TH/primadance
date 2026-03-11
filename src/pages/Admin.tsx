@@ -8,6 +8,7 @@ import AdminContent from "@/components/admin/AdminContent";
 import AdminBookings from "@/components/admin/AdminBookings";
 import AdminBlog from "@/components/admin/AdminBlog";
 import AdminSEO from "@/components/admin/AdminSEO";
+import AdminFAQ from "@/components/admin/AdminFAQ";
 import AdminGallery from "@/components/admin/AdminGallery";
 import { LogOut, Globe } from "lucide-react";
 
