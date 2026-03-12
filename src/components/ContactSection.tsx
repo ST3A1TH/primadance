@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import { useRef } from "react";
-import { MapPin, Instagram, Phone, Send, Facebook } from "lucide-react";
+import { MapPin, Instagram, Phone, Send, Facebook, Music2 } from "lucide-react";
 import logoTextDark from "@/assets/logo-text-dark.png";
 import logoTextLight from "@/assets/logo-text-light.png";
 import iconDark from "@/assets/icon-dark.png";
@@ -88,6 +88,17 @@ const ContactSection = () => {
                   Facebook
                 </a>
               </div>
+              <div className="flex items-center gap-4">
+                <Music2 className="w-4 h-4 text-muted-foreground shrink-0" />
+                <a
+                  href="https://www.tiktok.com/@primadancemd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
+                >
+                  TikTok
+                </a>
+              </div>
             </div>
 
             {/* Map */}
@@ -135,6 +146,10 @@ const ContactSection = () => {
               <a href="https://facebook.com/primadancemd" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
                 <Facebook className="w-4 h-4 shrink-0" /> Facebook
+              </a>
+              <a href="https://www.tiktok.com/@primadancemd" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+                <Music2 className="w-4 h-4 shrink-0" /> TikTok
               </a>
               <a href="tel:+37361100499"
                 className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
