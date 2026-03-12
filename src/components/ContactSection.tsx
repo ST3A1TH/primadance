@@ -88,6 +88,17 @@ const ContactSection = () => {
                   Facebook
                 </a>
               </div>
+              <div className="flex items-center gap-4">
+                <Music2 className="w-4 h-4 text-muted-foreground shrink-0" />
+                <a
+                  href="https://www.tiktok.com/@primadancemd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground text-sm font-body hover:text-muted-foreground transition-colors"
+                >
+                  TikTok
+                </a>
+              </div>
             </div>
 
             {/* Map */}
