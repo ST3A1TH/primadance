@@ -147,6 +147,10 @@ const ContactSection = () => {
                 className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
                 <Facebook className="w-4 h-4 shrink-0" /> Facebook
               </a>
+              <a href="https://www.tiktok.com/@primadancemd" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
+                <Music2 className="w-4 h-4 shrink-0" /> TikTok
+              </a>
               <a href="tel:+37361100499"
                 className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-body">
                 <Phone className="w-4 h-4 shrink-0" /> 061 100 499
