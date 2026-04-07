@@ -22,6 +22,11 @@ import danceHallWide from "@/assets/gallery/dance-hall-wide.jpg";
 import equipmentStorage from "@/assets/gallery/equipment-storage.jpg";
 import lockerRoom from "@/assets/gallery/locker-room.jpg";
 
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
 const staticImages: GalleryImage[] = [
   { src: barrePractice, alt: "Dance instructor practicing at the barre at Prima Dance Studio" },
   { src: studioInteriorBack, alt: "Prima Dance Studio interior view with mirrors and professional lighting" },
