@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
+import heroSlideReception from "@/assets/hero-slide-reception.jpg";
 import logoTextLight from "@/assets/logo-text-light.png";
 
-const slides = [heroSlide1, heroSlide2, heroImage];
+const slides = [heroSlide1, heroSlide2, heroImage, heroSlideReception];
 
 const HeroSection = () => {
   const { t } = useLanguage();
