@@ -9,7 +9,8 @@ import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlideReception from "@/assets/hero-slide-reception.jpg";
 import logoTextLight from "@/assets/logo-text-light.png";
 
-const slides = [heroSlide1, heroSlide2, heroImage, heroSlideReception];
+const slides = [heroSlideReception, heroSlide1, heroSlide2, heroImage];
+const slideDurations = [5000, 3000, 3000, 3000];
 
 const HeroSection = () => {
   const { t } = useLanguage();
