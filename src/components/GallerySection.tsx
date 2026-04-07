@@ -112,26 +112,33 @@ const GallerySection = () => {
             {t("gallery.subtitle")}
           </motion.p>
 
-          {/* Responsive Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            {galleryImages.map((image, index) => (
-              <motion.div
-                key={index}
-                className="relative overflow-hidden cursor-pointer group aspect-[4/3]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                onClick={() => openLightbox(index)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
-              </motion.div>
-            ))}
+          {/* Masonry-style Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[240px]">
+            {galleryImages.map((image, index) => {
+              // Make certain images span 2 rows or 2 cols for visual interest
+              const isLarge = index === 0 || index === 4 || index === 8 || index === 12;
+              const isTall = index === 2 || index === 6 || index === 10 || index === 14;
+              return (
+                <motion.div
+                  key={index}
+                  className={`relative overflow-hidden cursor-pointer group ${
+                    isLarge ? "md:col-span-2 md:row-span-2" : isTall ? "row-span-2" : ""
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.06 }}
+                  onClick={() => openLightbox(index)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import danceOverlay from "@/assets/dance-overlay-1.jpg";
+import danceOverlay from "@/assets/gallery/dance-hall-logo.jpg";
 
 const DanceOverlaySection = () => {
   const { t } = useLanguage();
