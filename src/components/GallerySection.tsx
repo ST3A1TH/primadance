@@ -140,7 +140,6 @@ const GallerySection = () => {
               );
             })}
           </div>
-          </div>
         </div>
       </section>
 
