@@ -28,22 +28,22 @@ interface GalleryImage {
 }
 
 const staticImages: GalleryImage[] = [
-  { src: barrePractice, alt: "Dance instructor practicing at the barre at Prima Dance Studio" },
-  { src: studioInteriorBack, alt: "Prima Dance Studio interior view with mirrors and professional lighting" },
-  { src: barreTutu, alt: "Dancer with tutu practicing at the barre in dance heels" },
-  { src: receptionDesk, alt: "Prima Dance Studio reception area with trophies and branding" },
-  { src: mainHallMirror, alt: "Main dance hall with full-length mirrors at Prima Dance Chisinau" },
-  { src: danceHallLogo, alt: "Spacious dance hall with brick wall and Prima Dance logo" },
-  { src: groupTraining1, alt: "Group Latin dance training for women at Prima Dance Chisinau" },
-  { src: privateLesson2, alt: "Private Latin dance lesson close-up at Prima Dance studio" },
-  { src: loungeArea, alt: "Lounge area with seating and view into the dance studio" },
-  { src: groupTraining2, alt: "Group ballroom dance class for adults in Chisinau" },
-  { src: danceHallWide, alt: "Wide view of Prima Dance Studio hall with industrial ceiling" },
-  { src: privateLesson1, alt: "Private Latin dance lesson with professional instructor" },
-  { src: equipmentStorage, alt: "Studio equipment storage with yoga mats and ballet barre" },
-  { src: movementCloseup, alt: "Dance movement technique close-up at Prima Dance" },
-  { src: lockerRoom, alt: "Modern locker room with wooden lockers at Prima Dance Studio" },
-  { src: techniquePractice, alt: "Ballroom dance technique practice session" },
+  { src: barrePractice, alt: "Instructoare de dans practicând la bară în studioul Prima Dance" },
+  { src: studioInteriorBack, alt: "Interiorul studioului Prima Dance cu oglinzi și iluminat profesional" },
+  { src: barreTutu, alt: "Dansatoare cu fustă tutu practicând la bară în pantofi de dans" },
+  { src: receptionDesk, alt: "Recepția studioului Prima Dance cu trofee și branding" },
+  { src: mainHallMirror, alt: "Sala principală de dans cu oglinzi la Prima Dance Chișinău" },
+  { src: danceHallLogo, alt: "Sala de dans spațioasă cu perete de cărămidă și logo Prima Dance" },
+  { src: groupTraining1, alt: "Antrenament de dans latin în grup pentru femei la Prima Dance Chișinău" },
+  { src: privateLesson2, alt: "Lecție privată de dans latin la studioul Prima Dance" },
+  { src: loungeArea, alt: "Zona de relaxare cu fotolii și vedere spre sala de dans" },
+  { src: groupTraining2, alt: "Curs de dans de societate pentru adulți în Chișinău" },
+  { src: danceHallWide, alt: "Vedere panoramică a sălii Prima Dance cu tavan industrial" },
+  { src: privateLesson1, alt: "Lecție privată de dans cu instructor profesionist" },
+  { src: equipmentStorage, alt: "Depozit de echipamente cu saltele și bară de balet" },
+  { src: movementCloseup, alt: "Detaliu tehnică de dans la Prima Dance" },
+  { src: lockerRoom, alt: "Vestiar modern cu dulapuri din lemn la Prima Dance" },
+  { src: techniquePractice, alt: "Sesiune de practică tehnică de dans de societate" },
 ];
 
 const GallerySection = () => {
