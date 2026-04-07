@@ -11,18 +11,33 @@ import privateLesson1 from "@/assets/gallery/private-lesson-1.jpg";
 import privateLesson2 from "@/assets/gallery/private-lesson-2.jpg";
 import techniquePractice from "@/assets/gallery/technique-practice.jpg";
 import movementCloseup from "@/assets/gallery/movement-closeup.jpg";
-
-interface GalleryImage {
-  src: string;
-  alt: string;
-}
+import barrePractice from "@/assets/gallery/barre-practice.jpg";
+import studioInteriorBack from "@/assets/gallery/studio-interior-back.jpg";
+import barreTutu from "@/assets/gallery/barre-tutu.jpg";
+import receptionDesk from "@/assets/gallery/reception-desk.jpg";
+import mainHallMirror from "@/assets/gallery/main-hall-mirror.jpg";
+import danceHallLogo from "@/assets/gallery/dance-hall-logo.jpg";
+import loungeArea from "@/assets/gallery/lounge-area.jpg";
+import danceHallWide from "@/assets/gallery/dance-hall-wide.jpg";
+import equipmentStorage from "@/assets/gallery/equipment-storage.jpg";
+import lockerRoom from "@/assets/gallery/locker-room.jpg";
 
 const staticImages: GalleryImage[] = [
+  { src: barrePractice, alt: "Dance instructor practicing at the barre at Prima Dance Studio" },
+  { src: studioInteriorBack, alt: "Prima Dance Studio interior view with mirrors and professional lighting" },
+  { src: barreTutu, alt: "Dancer with tutu practicing at the barre in dance heels" },
+  { src: receptionDesk, alt: "Prima Dance Studio reception area with trophies and branding" },
+  { src: mainHallMirror, alt: "Main dance hall with full-length mirrors at Prima Dance Chisinau" },
+  { src: danceHallLogo, alt: "Spacious dance hall with brick wall and Prima Dance logo" },
   { src: groupTraining1, alt: "Group Latin dance training for women at Prima Dance Chisinau" },
   { src: privateLesson2, alt: "Private Latin dance lesson close-up at Prima Dance studio" },
+  { src: loungeArea, alt: "Lounge area with seating and view into the dance studio" },
   { src: groupTraining2, alt: "Group ballroom dance class for adults in Chisinau" },
+  { src: danceHallWide, alt: "Wide view of Prima Dance Studio hall with industrial ceiling" },
   { src: privateLesson1, alt: "Private Latin dance lesson with professional instructor" },
+  { src: equipmentStorage, alt: "Studio equipment storage with yoga mats and ballet barre" },
   { src: movementCloseup, alt: "Dance movement technique close-up at Prima Dance" },
+  { src: lockerRoom, alt: "Modern locker room with wooden lockers at Prima Dance Studio" },
   { src: techniquePractice, alt: "Ballroom dance technique practice session" },
 ];
 
