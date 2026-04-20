@@ -65,23 +65,31 @@ const HeroSection = () => {
         <motion.div
           key={current}
           className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
         >
-          <picture>
-            {slides[current].mobile && (
-              <source media="(max-width: 768px)" srcSet={slides[current].mobile} />
-            )}
-            <img
-              src={slides[current].desktop}
-              alt={`Dance class at Prima Dance studio in Chisinau - ${current === 0 ? 'Latin dance training' : current === 1 ? 'Ballroom dance lesson' : 'Professional dance studio'}`}
-              className="w-full h-full object-cover"
-              fetchPriority={current === 0 ? "high" : undefined}
-              decoding={current === 0 ? "sync" : "async"}
-            />
-          </picture>
+          {/* Ken Burns: continuous zoom + subtle pan for cinematic dynamism */}
+          <motion.div
+            className="absolute inset-0 will-change-transform"
+            initial={{ scale: kenBurns[current].from.scale, x: kenBurns[current].from.x, y: kenBurns[current].from.y }}
+            animate={{ scale: kenBurns[current].to.scale, x: kenBurns[current].to.x, y: kenBurns[current].to.y }}
+            transition={{ duration: slideDurations[current] / 1000 + 1.2, ease: "linear" }}
+          >
+            <picture>
+              {slides[current].mobile && (
+                <source media="(max-width: 768px)" srcSet={slides[current].mobile} />
+              )}
+              <img
+                src={slides[current].desktop}
+                alt={slides[current].alt}
+                className="w-full h-full object-cover"
+                fetchPriority={current === 0 ? "high" : undefined}
+                decoding={current === 0 ? "sync" : "async"}
+              />
+            </picture>
+          </motion.div>
           {/* Always use dark overlay for readability regardless of theme */}
           <div className="absolute inset-0 bg-black/55" />
         </motion.div>
