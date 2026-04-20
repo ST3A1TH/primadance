@@ -3,21 +3,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-image.jpg";
-import heroSlide1 from "@/assets/hero-slide-1.jpg";
-import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlideReception from "@/assets/hero-slide-reception.jpg";
 import heroSlideReceptionMobile from "@/assets/hero-slide-reception-mobile.jpg";
+import heroDance1 from "@/assets/hero-dance1.jpg";
+import heroDance1Mobile from "@/assets/hero-dance1-mobile.jpg";
+import heroDance3 from "@/assets/hero-dance3.jpg";
+import heroDance3Mobile from "@/assets/hero-dance3-mobile.jpg";
+import heroDance4 from "@/assets/hero-dance4.jpg";
+import heroDance4Mobile from "@/assets/hero-dance4-mobile.jpg";
+import heroDance5 from "@/assets/hero-dance5.jpg";
+import heroDance5Mobile from "@/assets/hero-dance5-mobile.jpg";
+import heroStudioHall from "@/assets/hero-studio-hall.jpg";
+import heroStudioHallMobile from "@/assets/hero-studio-hall-mobile.jpg";
+import heroStudioMirror from "@/assets/hero-studio-mirror.jpg";
+import heroStudioMirrorMobile from "@/assets/hero-studio-mirror-mobile.jpg";
 import logoTextLight from "@/assets/logo-text-light.png";
 
-type Slide = { desktop: string; mobile?: string };
+type Slide = { desktop: string; mobile?: string; alt: string };
+// Mix: dramatic dance opener -> studio -> dance -> studio -> dance -> reception -> dance close-up
 const slides: Slide[] = [
-  { desktop: heroSlideReception, mobile: heroSlideReceptionMobile },
-  { desktop: heroSlide1 },
-  { desktop: heroSlide2 },
-  { desktop: heroImage },
+  { desktop: heroDance1, mobile: heroDance1Mobile, alt: "Cuplu de dansatori latino pe ringul de dans la Moldova Dance Festival" },
+  { desktop: heroStudioHall, mobile: heroStudioHallMobile, alt: "Sala principală a studioului Prima Dance din Chișinău" },
+  { desktop: heroDance3, mobile: heroDance3Mobile, alt: "Cuplu de dansatori în poziție de ballroom la Prima Dance" },
+  { desktop: heroStudioMirror, mobile: heroStudioMirrorMobile, alt: "Sala de dans cu oglinzi profesionale la studioul Prima Dance" },
+  { desktop: heroDance5, mobile: heroDance5Mobile, alt: "Cuplu de dansatori latino în ținută de competiție la Prima Dance" },
+  { desktop: heroSlideReception, mobile: heroSlideReceptionMobile, alt: "Recepția studioului de dans Prima Dance din Chișinău" },
+  { desktop: heroDance4, mobile: heroDance4Mobile, alt: "Portret artistic alb-negru al unei dansatoare profesioniste" },
 ];
-const slideDurations = [5000, 3000, 3000, 3000];
+const slideDurations = [5500, 4500, 4500, 4500, 4500, 5000, 4500];
+// Alternate Ken Burns directions for cinematic feel
+const kenBurns: Array<{ from: { scale: number; x: string; y: string }; to: { scale: number; x: string; y: string } }> = [
+  { from: { scale: 1.05, x: "0%", y: "0%" }, to: { scale: 1.18, x: "-2%", y: "1%" } },
+  { from: { scale: 1.15, x: "2%", y: "-1%" }, to: { scale: 1.02, x: "0%", y: "0%" } },
+  { from: { scale: 1.05, x: "-1%", y: "1%" }, to: { scale: 1.18, x: "1%", y: "-1%" } },
+  { from: { scale: 1.18, x: "1%", y: "1%" }, to: { scale: 1.04, x: "-1%", y: "-1%" } },
+  { from: { scale: 1.05, x: "0%", y: "0%" }, to: { scale: 1.18, x: "0%", y: "-2%" } },
+  { from: { scale: 1.12, x: "-1%", y: "0%" }, to: { scale: 1.04, x: "1%", y: "0%" } },
+  { from: { scale: 1.06, x: "1%", y: "1%" }, to: { scale: 1.2, x: "-2%", y: "-1%" } },
+];
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -42,23 +65,31 @@ const HeroSection = () => {
         <motion.div
           key={current}
           className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
         >
-          <picture>
-            {slides[current].mobile && (
-              <source media="(max-width: 768px)" srcSet={slides[current].mobile} />
-            )}
-            <img
-              src={slides[current].desktop}
-              alt={`Dance class at Prima Dance studio in Chisinau - ${current === 0 ? 'Latin dance training' : current === 1 ? 'Ballroom dance lesson' : 'Professional dance studio'}`}
-              className="w-full h-full object-cover"
-              fetchPriority={current === 0 ? "high" : undefined}
-              decoding={current === 0 ? "sync" : "async"}
-            />
-          </picture>
+          {/* Ken Burns: continuous zoom + subtle pan for cinematic dynamism */}
+          <motion.div
+            className="absolute inset-0 will-change-transform"
+            initial={{ scale: kenBurns[current].from.scale, x: kenBurns[current].from.x, y: kenBurns[current].from.y }}
+            animate={{ scale: kenBurns[current].to.scale, x: kenBurns[current].to.x, y: kenBurns[current].to.y }}
+            transition={{ duration: slideDurations[current] / 1000 + 1.2, ease: "linear" }}
+          >
+            <picture>
+              {slides[current].mobile && (
+                <source media="(max-width: 768px)" srcSet={slides[current].mobile} />
+              )}
+              <img
+                src={slides[current].desktop}
+                alt={slides[current].alt}
+                className="w-full h-full object-cover"
+                fetchPriority={current === 0 ? "high" : undefined}
+                decoding={current === 0 ? "sync" : "async"}
+              />
+            </picture>
+          </motion.div>
           {/* Always use dark overlay for readability regardless of theme */}
           <div className="absolute inset-0 bg-black/55" />
         </motion.div>
