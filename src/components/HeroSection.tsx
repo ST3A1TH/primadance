@@ -7,9 +7,16 @@ import heroImage from "@/assets/hero-image.jpg";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlideReception from "@/assets/hero-slide-reception.jpg";
+import heroSlideReceptionMobile from "@/assets/hero-slide-reception-mobile.jpg";
 import logoTextLight from "@/assets/logo-text-light.png";
 
-const slides = [heroSlideReception, heroSlide1, heroSlide2, heroImage];
+type Slide = { desktop: string; mobile?: string };
+const slides: Slide[] = [
+  { desktop: heroSlideReception, mobile: heroSlideReceptionMobile },
+  { desktop: heroSlide1 },
+  { desktop: heroSlide2 },
+  { desktop: heroImage },
+];
 const slideDurations = [5000, 3000, 3000, 3000];
 
 const HeroSection = () => {
@@ -40,13 +47,18 @@ const HeroSection = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
         >
-          <img
-            src={slides[current]}
-            alt={`Dance class at Prima Dance studio in Chisinau - ${current === 0 ? 'Latin dance training' : current === 1 ? 'Ballroom dance lesson' : 'Professional dance studio'}`}
-            className="w-full h-full object-cover"
-            fetchPriority={current === 0 ? "high" : undefined}
-            decoding={current === 0 ? "sync" : "async"}
-          />
+          <picture>
+            {slides[current].mobile && (
+              <source media="(max-width: 768px)" srcSet={slides[current].mobile} />
+            )}
+            <img
+              src={slides[current].desktop}
+              alt={`Dance class at Prima Dance studio in Chisinau - ${current === 0 ? 'Latin dance training' : current === 1 ? 'Ballroom dance lesson' : 'Professional dance studio'}`}
+              className="w-full h-full object-cover"
+              fetchPriority={current === 0 ? "high" : undefined}
+              decoding={current === 0 ? "sync" : "async"}
+            />
+          </picture>
           {/* Always use dark overlay for readability regardless of theme */}
           <div className="absolute inset-0 bg-black/55" />
         </motion.div>
