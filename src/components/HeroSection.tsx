@@ -84,7 +84,7 @@ const HeroSection = () => {
               <img
                 src={slides[current].desktop}
                 alt={slides[current].alt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-[center_30%]"
                 fetchPriority={current === 0 ? "high" : undefined}
                 decoding={current === 0 ? "sync" : "async"}
               />
