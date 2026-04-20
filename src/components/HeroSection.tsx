@@ -7,9 +7,16 @@ import heroImage from "@/assets/hero-image.jpg";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlideReception from "@/assets/hero-slide-reception.jpg";
+import heroSlideReceptionMobile from "@/assets/hero-slide-reception-mobile.jpg";
 import logoTextLight from "@/assets/logo-text-light.png";
 
-const slides = [heroSlideReception, heroSlide1, heroSlide2, heroImage];
+type Slide = { desktop: string; mobile?: string };
+const slides: Slide[] = [
+  { desktop: heroSlideReception, mobile: heroSlideReceptionMobile },
+  { desktop: heroSlide1 },
+  { desktop: heroSlide2 },
+  { desktop: heroImage },
+];
 const slideDurations = [5000, 3000, 3000, 3000];
 
 const HeroSection = () => {
