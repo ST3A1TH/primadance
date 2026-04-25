@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
+import AltegWidgetButton from "@/components/AltegWidgetButton";
 
 interface ScheduleEntry {
   id: string;
@@ -41,6 +42,17 @@ const ScheduleSection = () => {
         >
           {t("schedule.title")}
         </motion.h2>
+
+        <motion.div
+          className="mb-12 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          <AltegWidgetButton className="inline-block border border-foreground bg-foreground text-background px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-background hover:text-foreground transition-all duration-500">
+            {t("nav.booking")}
+          </AltegWidgetButton>
+        </motion.div>
 
         {isMobile ? (
           <div className="space-y-2">
