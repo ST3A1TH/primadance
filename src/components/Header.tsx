@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import iconDark from "@/assets/icon-dark.png";
 import iconLight from "@/assets/icon-light.png";
+import AltegWidgetButton from "@/components/AltegWidgetButton";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -123,15 +124,16 @@ const Header = () => {
                 >
                   {t("nav.account")}
                 </motion.button>
-                <motion.button
+                <motion.div
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: (navItems.length + 1) * 0.04, duration: 0.2 }}
-                  onClick={() => handleNavigate("/booking")}
-                  className="text-foreground/80 hover:text-foreground hover:pl-2 transition-all duration-200 text-sm tracking-[0.2em] uppercase font-body text-left py-3"
+                  onClick={() => setMenuOpen(false)}
                 >
-                  {t("nav.booking")}
-                </motion.button>
+                  <AltegWidgetButton className="block text-foreground/80 hover:text-foreground hover:pl-2 transition-all duration-200 text-sm tracking-[0.2em] uppercase font-body text-left py-3">
+                    {t("nav.booking")}
+                  </AltegWidgetButton>
+                </motion.div>
               </div>
             </nav>
           </motion.div>
