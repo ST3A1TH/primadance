@@ -158,7 +158,7 @@ const HeroSection = () => {
               to="/booking"
               className="inline-block border border-white text-white px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-white hover:text-black transition-all duration-500"
             >
-              {t("hero.cta")}
+              {t("nav.schedule")}
             </Link>
           </div>
         </motion.div>
