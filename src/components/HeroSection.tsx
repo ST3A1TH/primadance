@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import { Link } from "react-router-dom";
+import AltegWidgetButton from "@/components/AltegWidgetButton";
 import heroSlideReception from "@/assets/hero-slide-reception.jpg";
 import heroSlideReceptionMobile from "@/assets/hero-slide-reception-mobile.jpg";
 import heroDance1 from "@/assets/hero-dance1.jpg";
@@ -149,12 +150,17 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
-          <Link
-            to="/booking"
-            className="inline-block border border-white text-white px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-white hover:text-black transition-all duration-500"
-          >
-            {t("hero.cta")}
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <AltegWidgetButton className="inline-block border border-white bg-white text-black px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-transparent hover:text-white transition-all duration-500">
+              {t("nav.schedule")}
+            </AltegWidgetButton>
+            <Link
+              to="/booking"
+              className="inline-block border border-white text-white px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-white hover:text-black transition-all duration-500"
+            >
+              {t("hero.cta")}
+            </Link>
+          </div>
         </motion.div>
       </div>
 
