@@ -150,9 +150,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 1.2 }}
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <AltegWidgetButton className="inline-block border border-white bg-white text-black px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-transparent hover:text-white transition-all duration-500">
-              {t("nav.schedule")}
-            </AltegWidgetButton>
             <AltegWidgetButton
               className="inline-block border border-white text-white px-8 py-3 text-sm tracking-[0.2em] uppercase font-body hover:bg-white hover:text-black transition-all duration-500"
             >
