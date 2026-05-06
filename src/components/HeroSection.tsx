@@ -17,12 +17,14 @@ import heroStudioHall from "@/assets/hero-studio-hall.jpg";
 import heroStudioHallMobile from "@/assets/hero-studio-hall-mobile.jpg";
 import heroStudioMirror from "@/assets/hero-studio-mirror.jpg";
 import heroStudioMirrorMobile from "@/assets/hero-studio-mirror-mobile.jpg";
+import heroSlideGif from "@/assets/hero-slide.gif";
 import logoTextLight from "@/assets/logo-text-light.png";
 
 type Slide = { desktop: string; mobile?: string; alt: string };
 // Mix: dramatic dance opener -> studio -> dance -> studio -> dance -> reception -> dance close-up
 const slides: Slide[] = [
   { desktop: heroDance1, mobile: heroDance1Mobile, alt: "Cuplu de dansatori latino pe ringul de dans la Moldova Dance Festival" },
+  { desktop: heroSlideGif, alt: "Prima Dance — moment de dans animat" },
   { desktop: heroStudioHall, mobile: heroStudioHallMobile, alt: "Sala principală a studioului Prima Dance din Chișinău" },
   { desktop: heroDance3, mobile: heroDance3Mobile, alt: "Cuplu de dansatori în poziție de ballroom la Prima Dance" },
   { desktop: heroStudioMirror, mobile: heroStudioMirrorMobile, alt: "Sala de dans cu oglinzi profesionale la studioul Prima Dance" },
@@ -30,10 +32,11 @@ const slides: Slide[] = [
   { desktop: heroSlideReception, mobile: heroSlideReceptionMobile, alt: "Recepția studioului de dans Prima Dance din Chișinău" },
   { desktop: heroDance4, mobile: heroDance4Mobile, alt: "Portret artistic alb-negru al unei dansatoare profesioniste" },
 ];
-const slideDurations = [5500, 4500, 4500, 4500, 4500, 5000, 4500];
+const slideDurations = [5500, 5000, 4500, 4500, 4500, 4500, 5000, 4500];
 // Alternate Ken Burns directions for cinematic feel
 const kenBurns: Array<{ from: { scale: number; x: string; y: string }; to: { scale: number; x: string; y: string } }> = [
   { from: { scale: 1.05, x: "0%", y: "0%" }, to: { scale: 1.18, x: "-2%", y: "1%" } },
+  { from: { scale: 1.08, x: "0%", y: "0%" }, to: { scale: 1.14, x: "-1%", y: "0%" } },
   { from: { scale: 1.15, x: "2%", y: "-1%" }, to: { scale: 1.02, x: "0%", y: "0%" } },
   { from: { scale: 1.05, x: "-1%", y: "1%" }, to: { scale: 1.18, x: "1%", y: "-1%" } },
   { from: { scale: 1.18, x: "1%", y: "1%" }, to: { scale: 1.04, x: "-1%", y: "-1%" } },
