@@ -182,6 +182,45 @@ const GallerySection = () => {
         </div>
       </section>
 
+      {/* Lessons Video */}
+      <section id="lessons" className="py-24 md:py-32 bg-secondary/30">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <motion.h2
+            className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 text-center tracking-wide"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
+            {t("gallery.lessons.title")}
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground text-sm font-body text-center mb-12 tracking-widest uppercase"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {t("gallery.lessons.subtitle")}
+          </motion.p>
+          <motion.div
+            className="relative overflow-hidden mx-auto max-w-4xl aspect-video bg-background"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
+            <video
+              src="/videos/lessons.mp4"
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Lightbox */}
       <AnimatePresence>
         {lightboxIndex !== null && (
