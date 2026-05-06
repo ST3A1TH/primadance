@@ -12,6 +12,8 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import MyAccount from "./pages/MyAccount";
 import NotFound from "./pages/NotFound";
+import GalleryPhotos from "./pages/GalleryPhotos";
+import { GalleryTour, GalleryLessons } from "./pages/GalleryVideo";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,9 @@ const App = () => (
               <Route path="/booking" element={<Booking />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/my-account" element={<MyAccount />} />
+              <Route path="/gallery/photos" element={<GalleryPhotos />} />
+              <Route path="/gallery/tour" element={<GalleryTour />} />
+              <Route path="/gallery/lessons" element={<GalleryLessons />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="*" element={<NotFound />} />
