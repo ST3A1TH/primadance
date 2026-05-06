@@ -172,6 +172,8 @@ const translations: Record<string, Record<Lang, string>> = {
   // Gallery
   "gallery.title": { ro: "Galerie", ru: "Галерея" },
   "gallery.subtitle": { ro: "Momente din studio", ru: "Моменты из студии" },
+  "gallery.tour.title": { ro: "Tur Prima Dance", ru: "Тур по Prima Dance" },
+  "gallery.tour.subtitle": { ro: "Vizitează studioul nostru", ru: "Загляните в нашу студию" },
 
   // Account
   "nav.account": { ro: "Contul Meu", ru: "Мой аккаунт" },
