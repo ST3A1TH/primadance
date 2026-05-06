@@ -176,6 +176,10 @@ const translations: Record<string, Record<Lang, string>> = {
   "gallery.tour.subtitle": { ro: "Vizitează studioul nostru", ru: "Загляните в нашу студию" },
   "gallery.lessons.title": { ro: "Video lecții", ru: "Видео уроков" },
   "gallery.lessons.subtitle": { ro: "Momente din timpul lecțiilor", ru: "Моменты с занятий" },
+  "gallery.photos.title": { ro: "Fotografii", ru: "Фотографии" },
+  "gallery.photos.subtitle": { ro: "Studio și lecții în imagini", ru: "Студия и занятия в фото" },
+  "gallery.explore": { ro: "Explorează", ru: "Смотреть" },
+  "gallery.back": { ro: "Înapoi la galerie", ru: "Назад к галерее" },
 
   // Account
   "nav.account": { ro: "Contul Meu", ru: "Мой аккаунт" },
