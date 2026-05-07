@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import photosCover from "@/assets/gallery/photos-cover.jpg";
 import tourCover from "@/assets/gallery/tour-cover.jpg";
-import privateLesson1 from "@/assets/gallery/private-lesson-1.jpg";
+import lessonsCover from "@/assets/gallery/lessons-cover.jpg";
 
 const GallerySection = () => {
   const { t } = useLanguage();
@@ -14,7 +14,7 @@ const GallerySection = () => {
   const cards = [
     { to: "/gallery/photos", img: photosCover, title: t("gallery.photos.title"), subtitle: t("gallery.photos.subtitle") },
     { to: "/gallery/tour", img: tourCover, title: t("gallery.tour.title"), subtitle: t("gallery.tour.subtitle") },
-    { to: "/gallery/lessons", img: privateLesson1, title: t("gallery.lessons.title"), subtitle: t("gallery.lessons.subtitle") },
+    { to: "/gallery/lessons", img: lessonsCover, title: t("gallery.lessons.title"), subtitle: t("gallery.lessons.subtitle") },
   ];
 
   return (
