@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import mainHallMirror from "@/assets/gallery/main-hall-mirror.jpg";
+import photosCover from "@/assets/gallery/photos-cover.jpg";
 import groupTraining1 from "@/assets/gallery/group-training-1.jpg";
 import privateLesson1 from "@/assets/gallery/private-lesson-1.jpg";
 
@@ -12,7 +12,7 @@ const GallerySection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const cards = [
-    { to: "/gallery/photos", img: mainHallMirror, title: t("gallery.photos.title"), subtitle: t("gallery.photos.subtitle") },
+    { to: "/gallery/photos", img: photosCover, title: t("gallery.photos.title"), subtitle: t("gallery.photos.subtitle") },
     { to: "/gallery/tour", img: groupTraining1, title: t("gallery.tour.title"), subtitle: t("gallery.tour.subtitle") },
     { to: "/gallery/lessons", img: privateLesson1, title: t("gallery.lessons.title"), subtitle: t("gallery.lessons.subtitle") },
   ];
