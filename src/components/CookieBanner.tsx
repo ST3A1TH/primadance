@@ -24,7 +24,7 @@ const CookieBanner = () => {
       aria-label={t("cookies.bannerTitle")}
       className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[60] bg-background border border-border shadow-lg p-5 animate-in fade-in slide-in-from-bottom-4 duration-500"
     >
-      <p className="font-heading text-sm tracking-wide text-foreground mb-2">{t("cookies.bannerTitle")}</p>
+      <p className="font-display text-base tracking-wide text-foreground mb-2">{t("cookies.bannerTitle")}</p>
       <p className="font-body text-xs leading-relaxed text-muted-foreground mb-4">
         {t("cookies.bannerText")}{" "}
         <Link to="/cookie-policy" className="underline underline-offset-2 text-foreground hover:opacity-70">
