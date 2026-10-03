@@ -14,6 +14,8 @@ import MyAccount from "./pages/MyAccount";
 import NotFound from "./pages/NotFound";
 import GalleryPhotos from "./pages/GalleryPhotos";
 import { GalleryTour, GalleryLessons } from "./pages/GalleryVideo";
+import CookiePolicy from "./pages/CookiePolicy";
+import CookieBanner from "./components/CookieBanner";
 
 const queryClient = new QueryClient();
 
@@ -33,10 +35,12 @@ const App = () => (
               <Route path="/gallery/photos" element={<GalleryPhotos />} />
               <Route path="/gallery/tour" element={<GalleryTour />} />
               <Route path="/gallery/lessons" element={<GalleryLessons />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <CookieBanner />
           </BrowserRouter>
         </LanguageProvider>
       </ThemeProvider>
