@@ -18,11 +18,13 @@ const CookieBanner = () => {
   if (!visible || pathname.startsWith("/admin")) return null;
 
   return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-foreground/40 backdrop-blur-sm p-4 animate-in fade-in duration-300">
     <div
       role="dialog"
+      aria-modal="true"
       aria-live="polite"
       aria-label={t("cookies.bannerTitle")}
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-[60] bg-background border border-border shadow-lg p-5 animate-in fade-in slide-in-from-bottom-4 duration-500"
+      className="w-full max-w-md bg-background border border-border shadow-2xl p-6 sm:p-8 text-center animate-in fade-in zoom-in-95 duration-300"
     >
       <p className="font-display text-base tracking-wide text-foreground mb-2">{t("cookies.bannerTitle")}</p>
       <p className="font-body text-xs leading-relaxed text-muted-foreground mb-4">
@@ -45,6 +47,7 @@ const CookieBanner = () => {
           {t("cookies.accept")}
         </button>
       </div>
+    </div>
     </div>
   );
 };
