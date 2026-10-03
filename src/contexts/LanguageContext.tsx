@@ -198,6 +198,22 @@ const translations: Record<string, Record<Lang, string>> = {
   "account.invalidCode": { ro: "Cod invalid. Încearcă din nou.", ru: "Неверный код. Попробуйте снова." },
   "account.error": { ro: "A apărut o eroare", ru: "Произошла ошибка" },
   "account.logout": { ro: "Deconectare", ru: "Выйти" },
+
+  // Cookies
+  "cookies.bannerTitle": { ro: "Folosim cookie-uri", ru: "Мы используем cookie" },
+  "cookies.bannerText": {
+    ro: "Folosim cookie-uri de analiză pentru a îmbunătăți site-ul. Le activăm doar cu acordul tău.",
+    ru: "Мы используем аналитические cookie, чтобы улучшать сайт. Они включаются только с вашего согласия."
+  },
+  "cookies.policyLink": { ro: "Politica cookie", ru: "Политика cookie" },
+  "cookies.accept": { ro: "Accept", ru: "Принять" },
+  "cookies.decline": { ro: "Refuz", ru: "Отклонить" },
+  "cookies.settingsTitle": { ro: "Preferințele tale", ru: "Ваши настройки" },
+  "cookies.currentStatus": { ro: "Starea actuală", ru: "Текущий статус" },
+  "cookies.statusNone": { ro: "nicio alegere făcută", ru: "выбор не сделан" },
+  "cookies.statusAccepted": { ro: "cookie-uri de analiză acceptate", ru: "аналитические cookie разрешены" },
+  "cookies.statusDeclined": { ro: "doar cookie-uri necesare", ru: "только необходимые cookie" },
+  "cookies.footerLink": { ro: "Politica cookie", ru: "Политика cookie" },
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

@@ -170,6 +170,10 @@ const ContactSection = () => {
           <div className="border-t border-border pt-6 text-center">
             <p className="text-muted-foreground text-xs font-body">
               © {new Date().getFullYear()} Prima Dance. {t("footer.rights")}
+              <span className="mx-2">·</span>
+              <a href="/cookie-policy" className="underline underline-offset-2 hover:text-foreground transition-colors">
+                {t("cookies.footerLink")}
+              </a>
             </p>
           </div>
         </div>
